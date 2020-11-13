@@ -15,7 +15,7 @@ const userSchema = new Schema (
       required: [true, 'Password is required'], 
       unique: true
     },
-    location: {
+    location: {  // eventually to link to API 
       type: String,
       trim: true
     },

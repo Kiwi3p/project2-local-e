@@ -10,3 +10,8 @@ a {
 .main-container {
   display: flex;
 }
+
+.container {
+  background-color: black;
+  color: white;
+}
