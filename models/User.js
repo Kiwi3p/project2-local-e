@@ -15,16 +15,19 @@ const userSchema = new Schema (
       required: [true, 'Password is required'], 
       unique: true
     },
+    location: {
+      type: String,
+      trim: true
+    },
     password: {
       type: String,
       trim: true, 
       required: [true, 'Password is required'],  //Validation form DataBase
-    },
-    location: {
-      type: String,
-      trim: true
     }
+  }, {
+    timestamps: true // to record created at & updated at 
   }
+
 )
 
 module.exports = model('User', userSchema); 

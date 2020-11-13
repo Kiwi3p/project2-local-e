@@ -1,2 +1,17 @@
+<div class="container">
+  <br />
+  <br>
+
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<p>{{subtitle}}!</p>
+
+{{#if user}}
+<form action='/logout' method="POST">
+  <button type="submit">Logout</button>
+</form>
+<a href="/private">Private</a>
+{{else}}
+<a href="/login">Enter</a>
+{{/if}}
+
+</div>
