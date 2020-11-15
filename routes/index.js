@@ -19,8 +19,12 @@ function requireLogin(req, res, next) {
     });
 
 
-router.get('/private', requireLogin, (req, res) => { 
-  res.render('private');
-})
+    router.get('/profile', requireLogin, (req, res) => {
+      res.render('private/profile');
+    });
+
+    router.get('/map', requireLogin, (req, res) => {
+      res.render('private/map');
+    });
 
 module.exports = router;

@@ -50,21 +50,16 @@ router.post('/login', (req, res) => {
     });
 });
 
-/*router.get('/signup', (req, res) => {
-  res.render('auth/signup');
-});
-*/
-
 //SIGNUP
 router.post('/signup', (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, location } = req.body;
   
   //hash the password
   const salt = bcrypt.genSaltSync(saltRounds);
   const hashPassword = bcrypt.hashSync(password, salt);
 
   if(username == '' || password == '') {
-    res.render('auth/signup' , 
+    res.render('auth/login' , 
     {
       errorMessage: 'Indicate username and password'
     });
@@ -74,7 +69,7 @@ router.post('/signup', (req, res) => {
   // Regular expression to filter the password
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if(!regex.test(password)) {
-    res.render('auth/signup' , 
+    res.render('auth/login' , 
     {
       errorMessage: 'Password is not strong enough: needs at least 6 characters, one numebr and one uppercase'
     })
@@ -84,12 +79,12 @@ router.post('/signup', (req, res) => {
   User.findOne({'username': username})
     .then((user) => {
       if(user) {   // !== undefined
-        res.render('auth/signup', {
+        res.render('auth/login', {
           errorMessage: 'The username already exists'
         })
         return;
       }
-      User.create({ username, email, password: hashPassword})
+      User.create({ username, email, password: hashPassword, location})
       // so it only creates after checking
       .then(() => {
         res.redirect('/');
@@ -97,11 +92,11 @@ router.post('/signup', (req, res) => {
       .catch((err) => {  // From DATABASE
         if (err.code === 11000) {  // code message form MongoDB
           res.status(500).  // for REACT 
-          render('auth/signup', {
+          render('auth/login', {
             errorMessage: 'Username and Email need to be unique'
           })
         } else {
-          res.render('auth/signup', {
+          res.render('auth/login', {
             errorMessage: err
           })
         }

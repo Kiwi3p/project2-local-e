@@ -17,7 +17,7 @@ const userSchema = new Schema (
     },
     location: {  // eventually to link to API 
       type: String,
-      trim: true
+      trim: true,
     },
     password: {
       type: String,

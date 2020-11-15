@@ -3,6 +3,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+nav {
+  margin: 0 20px 20px;
+}
+
 a {
   color: #00B7FF;
 }
@@ -14,4 +18,28 @@ a {
 .container {
   background-color: black;
   color: white;
+}
+
+.profile-information {
+  display: flex;
+  flex-direction: row;
+  height: 500px;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-info {
+  background-color: white;
+  height: 400px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: -10px -10px rgb(194, 194, 194);
+}
+
+.profile-info p, h3, p {
+  color: black;
+}
+
+.profile-header {
+  margin-left: 22px;
 }
