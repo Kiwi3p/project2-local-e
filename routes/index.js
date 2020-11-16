@@ -20,6 +20,12 @@ function requireLogin(req, res, next) {
 
     //profile
     router.get('/profile', requireLogin, (req, res) => {
+     
+      //req.session.currentUser = user;
+      let storedLocation = req.session.currentUser.location;
+  
+      console.log(storedLocation)
+
       res.render('private/profile');
     });
 
@@ -28,17 +34,13 @@ function requireLogin(req, res, next) {
       res.render('private/profile');
     });
 
-    //location
+
+    //ENTER location 
     router.get('/location', (req, res) => {
 
       let location = JSON.stringify({ lat: '123', long: '123'})
       res.render('location/location', {location : location});
     })
 
-    //READ and display landing profile page with stored location
-    router.app('/private/profile', (req, res) =>{
-      callAPI
-      .cliet()
-    })
 
 module.exports = router;
