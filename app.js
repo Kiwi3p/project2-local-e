@@ -62,6 +62,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = 'Local-E';
 app.locals.subtitle = 'Keep it Local';
+app.locals.gmapKey = process.env.GOOGLE_MAPS_API_KEY;
 
 
 const index = require('./routes/index');
@@ -74,8 +75,7 @@ const yelp = require('./routes/yelp');
 app.use('/', yelp);
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
-app.locals.gmapKey = process.env.GOOGLE_MAPS_API_KEY;
+
 
 
 module.exports = app;
