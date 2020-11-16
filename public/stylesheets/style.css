@@ -2,6 +2,19 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+a {
+  color: black;
+  padding: 10px;
+}
+
+.title {
+  font-size: 45px;
+}
+.subtitle {
+  color: white;
+  font-size: 20px;
+}
+
 nav {
   margin: 0 20px 20px;
 }
@@ -10,22 +23,20 @@ nav {
   overflow:hidden; overflow-y:scroll;
 }
 
-a {
-  color: #00B7FF;
-}
 
-.subtitle {
-    color: white;
-}
+
+
 
 .intro-desc {
   color: white;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .container {
   background-color: black;
   color: white;
+ 
+
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -38,14 +49,14 @@ a {
 .profile-information {
   display: flex;
   flex-direction: row;
-  height: 700px;
+  height: 500px;
   align-items: center;
   justify-content: center;
 }
 
 .profile-info {
   background-color: white;
-  height: 500px;
+  height: 400px;
   margin: 20px;
   padding: 20px;
   box-shadow: -10px -10px rgb(194, 194, 194);

@@ -64,7 +64,6 @@ app.locals.title = 'Local-E';
 app.locals.subtitle = 'Keep it Local';
 app.locals.gmapKey = process.env.GOOGLE_MAPS_API_KEY;
 
-
 const index = require('./routes/index');
 app.use('/', index);
 
@@ -73,8 +72,6 @@ app.use('/', auth);
 
 const yelp = require('./routes/yelp');
 app.use('/', yelp);
-
-// default value for title local
 
 
 
