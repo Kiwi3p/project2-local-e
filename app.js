@@ -73,5 +73,9 @@ app.use('/', auth);
 const yelp = require('./routes/yelp');
 app.use('/', yelp);
 
+// default value for title local
+app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.gmapKey = process.env.GOOGLE_MAPS_API_KEY;
+
 
 module.exports = app;
