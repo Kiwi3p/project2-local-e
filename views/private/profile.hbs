@@ -26,4 +26,15 @@
     </section>
 </div>
 
-
+<script>
+function getCurrentLocation() {
+navigator.geolocation.getCurrentPosition((position) => {
+const pos = {
+lat: position.coords.latitude,
+lng: position.coords.longitude
+}
+map.setCenter(pos);
+map.setZoom(17);
+});
+}
+</script>
