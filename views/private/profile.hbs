@@ -1,8 +1,17 @@
 <h4 class="profile-header">{{user.username}} Profile</h4>
 <div class="container">
     <section class="profile-information dark-background">
-          <article class="container profile-info">
-            <h3>Map here</h3>
+          <article class="container profile-info map">
+            <div class="map-search">
+            <h3>Map</h3>
+            <form>
+              <label>
+                <input type="text" name="location" placeholder="Enter location" required>
+              </label>
+            </form>
+            <button type="submit" onclick="getCurrentLocation()">Get current location</button>
+            </div>
+            <div id="map"></div>
           </article>
           <article class="container profile-info">
             <h3>Favorite Shops!</h3>
@@ -29,3 +38,15 @@
     </div>
     </section>
 </div>
+
+<script>
+  
+  let map;
+function initMap(req, res) {
+  const location = req.session.currentUser.location;
+   map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 17,
+    center: location
+  })
+}
+</script>
