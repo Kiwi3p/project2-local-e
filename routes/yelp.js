@@ -7,16 +7,6 @@ const router  = express.Router();
 const apiKey = 'WgRag4zBmo7OTNmEPv_H4JsjK1OhtfSYeCIG99_4-xK7R0Ref9OP0RlVWb_5GssPYF9KucWPXl70qYDIzIGruWthGl3ZgcC9YuxBYOg8T21PmTk6kzRKSTf2InKtX3Yx';
 
 
-//let storedLocation = req.session.currentUser.location;
-
-const searchDeny = {
-  term: 'pingo doce',
-  latitude: 38.7600325,
-  longitude: -9.1400807,
-  radius: 5000,
-  limit: 8
-}
-
 /*
 let listOfSupermarketsFromAPI = [];
 
@@ -28,8 +18,8 @@ let filteredSupermarkets = listOfSupermarketsFromAPI.filter((supermarket) => {
 const client = yelp.client(apiKey);
 
 
-router.get('/profile/dashboard', (req, res) =>  {
-  console.log('usr location', req.session.currentUser.location)
+router.get('/yelp', (req, res) =>  {
+  //console.log('usr location', req.session.currentUser.location)
   const searchRequest = {
     term:'Farmers market',
     location: req.session.currentUser.location,

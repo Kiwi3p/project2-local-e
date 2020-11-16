@@ -37,7 +37,7 @@ router.post('/login', (req, res) => {
         //SESSION CREATED and set teh user to the Session 
         //User in the session allows the time set for teh session!
 
-        res.redirect('/profile/dashboard');
+        res.redirect('/profile');
         //res.render('private/profile', { user })
         console.log(user);
 

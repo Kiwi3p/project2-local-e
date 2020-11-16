@@ -15,14 +15,19 @@ a {
   color: #00B7FF;
 }
 
-.main-container {
-  display: flex;
+.subtitle {
+    color: white;
 }
-
 .container {
   background-color: black;
   color: white;
 }
+
+.main-container {
+  display: flex;
+}
+
+
 
 .profile-information {
   display: flex;
