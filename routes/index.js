@@ -18,13 +18,27 @@ function requireLogin(req, res, next) {
       //User in the session allows the time set for teh session!
     });
 
-
+    //profile
     router.get('/profile', requireLogin, (req, res) => {
       res.render('private/profile');
     });
 
+    //map
     router.get('/map', requireLogin, (req, res) => {
-      res.render('private/map');
+      res.render('private/profile');
     });
+
+    //location
+    router.get('/location', (req, res) => {
+
+      let location = JSON.stringify({ lat: '123', long: '123'})
+      res.render('location/location', {location : location});
+    })
+
+    //READ and display landing profile page with stored location
+    router.app('/private/profile', (req, res) =>{
+      callAPI
+      .cliet()
+    })
 
 module.exports = router;
