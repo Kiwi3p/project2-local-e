@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 }, false);
 
-//GEt location 
+
+//GEt location.hbs
 var x = document.getElementById("demo");
 function getLocation() {
 if (navigator.geolocation) {
