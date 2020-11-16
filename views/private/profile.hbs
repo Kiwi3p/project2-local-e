@@ -19,4 +19,15 @@
     </section>
 </div>
 
-
+<div class="container">
+    <section class="yelp-pull">
+      <h1>Text Test</h1>
+      <div class="yelp-display">
+        {{#each print}}
+            <img src="{{image_url}}">
+            <p>{{name}}</p>
+            <p>{{location.city}}</p>
+        {{/each}}
+    </div>
+    </section>
+</div>
