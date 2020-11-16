@@ -7,31 +7,6 @@ const router  = express.Router();
 const apiKey = 'WgRag4zBmo7OTNmEPv_H4JsjK1OhtfSYeCIG99_4-xK7R0Ref9OP0RlVWb_5GssPYF9KucWPXl70qYDIzIGruWthGl3ZgcC9YuxBYOg8T21PmTk6kzRKSTf2InKtX3Yx';
 
 
-<<<<<<< HEAD
-app.set('view engine', 'hbs');
-app.set('views', __dirname + '/views');
-app.use(express.static(__dirname + '/public'));
-//let storedLocation = req.session.currentUser.location;
-const searchRequest = {
-  term:'Farmers market',
-  location: `Lisbon, pt`,
-  //latitude: 38.7600325,   //input {{LAT}} data here
-  //longitude: -9.1400807, //input {{LONG}} data here
-  radius: 5000, 
-  limit: 8
-};
-=======
-//let storedLocation = req.session.currentUser.location;
->>>>>>> 9fddc4c168ecee8a0123e48bb5d0f31a6bbb90c1
-
-const searchDeny = {
-  term: 'pingo doce',
-  latitude: 38.7600325,
-  longitude: -9.1400807,
-  radius: 5000,
-  limit: 8
-}
-
 /*
 let listOfSupermarketsFromAPI = [];
 
@@ -44,7 +19,7 @@ const client = yelp.client(apiKey);
 
 
 router.get('/yelp', (req, res) =>  {
-  console.log('usr location', req.session.currentUser.location)
+  //console.log('usr location', req.session.currentUser.location)
   const searchRequest = {
     term:'Farmers market',
     location: req.session.currentUser.location,
