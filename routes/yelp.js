@@ -15,10 +15,10 @@ const app = express();
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
-let storedLocation = req.session.currentUser.location;
+//let storedLocation = req.session.currentUser.location;
 const searchRequest = {
   term:'Farmers market',
-  location: storedLocation,
+  location: `Lisbon, pt`,
   //latitude: 38.7600325,   //input {{LAT}} data here
   //longitude: -9.1400807, //input {{LONG}} data here
   radius: 5000, 
