@@ -20,7 +20,9 @@ function requireLogin(req, res, next) {
 
     //profile
     router.get('/profile', requireLogin, (req, res) => {
+      currentLocation = req.session.currentUser.location;
       res.render('private/profile');
+      console.log(currentLocation);
     });
 
     //map
@@ -36,9 +38,10 @@ function requireLogin(req, res, next) {
     })
 
     //READ and display landing profile page with stored location
+    /*
     router.app('/private/profile', (req, res) =>{
       callAPI
       .cliet()
-    })
+    })*/
 
 module.exports = router;
