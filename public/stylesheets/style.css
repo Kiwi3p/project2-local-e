@@ -2,6 +2,19 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+a {
+  color: black;
+  padding: 10px;
+}
+
+.title {
+  font-size: 50px;
+}
+.subtitle {
+  color: white;
+  font-size: 20px;
+}
+
 nav {
   margin: 0 20px 20px;
 }
@@ -10,17 +23,13 @@ nav {
   overflow:hidden; overflow-y:scroll;
 }
 
-a {
-  color: #00B7FF;
-}
 
-.subtitle {
-    color: white;
-}
+
+
 
 .intro-desc {
   color: white;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .container {
