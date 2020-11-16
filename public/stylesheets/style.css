@@ -7,6 +7,10 @@ nav {
   margin: 0 20px 20px;
 }
 
+.yelp-display {
+  overflow:hidden; overflow-y:scroll;
+}
+
 a {
   color: #00B7FF;
 }

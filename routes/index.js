@@ -21,10 +21,10 @@ function requireLogin(req, res, next) {
     //profile
     router.get('/profile', requireLogin, (req, res) => {
       let storedLocation = req.session.currentUser.location;
-      res.render('private/profile');
+      res.render('private/profile', {user: req.session.currentUser});
       console.log(storedLocation);
     });
-
+    
     //map
     router.get('/map', requireLogin, (req, res) => {
       res.render('private/profile');

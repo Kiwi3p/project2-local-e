@@ -28,7 +28,7 @@ let filteredSupermarkets = listOfSupermarketsFromAPI.filter((supermarket) => {
 const client = yelp.client(apiKey);
 
 
-router.get('/yelp', (req, res) =>  {
+router.get('/profile/dashboard', (req, res) =>  {
   console.log('usr location', req.session.currentUser.location)
   const searchRequest = {
     term:'Farmers market',

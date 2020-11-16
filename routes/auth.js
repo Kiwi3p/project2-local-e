@@ -37,8 +37,8 @@ router.post('/login', (req, res) => {
         //SESSION CREATED and set teh user to the Session 
         //User in the session allows the time set for teh session!
 
-        //res.redirect('/')
-        res.render('index', { user })
+        res.redirect('/profile/dashboard');
+        //res.render('private/profile', { user })
         console.log(user);
 
       } else {
@@ -87,7 +87,7 @@ router.post('/signup', (req, res) => {
       User.create({ username, email, password: hashPassword, location})
       // so it only creates after checking
       .then(() => {
-        res.redirect('/');
+        res.redirect('/profile/dashboard');
       })
       .catch((err) => {  // From DATABASE
         if (err.code === 11000) {  // code message form MongoDB

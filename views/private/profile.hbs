@@ -2,6 +2,9 @@
 <div class="container">
     <section class="profile-information dark-background">
           <article class="container profile-info">
+            <h3>Map here</h3>
+          </article>
+          <article class="container profile-info">
             <h3>Favorite Shops!</h3>
               <div class="yelp-display">
                   {{#each print}}
@@ -9,31 +12,15 @@
                       <p>{{name}}</p>
                       <p>{{location.city}}</p>
                       <a class="link-btn" href="#">Test Link</a>
+                      <hr>
                   {{/each}}
               </div>
           </article>
           <article class="container profile-info">
-            <h3>Transit options</h3>
+            <h3>Favorite Farmers Markets</h3>
             <p class="text-look">Transit options go here</p>
-            <a class="link-btn" href="#">Test Link</a>
-          </article>
-          <article class="container profile-info">
-            <h3>Upcoming events</h3>
-            <p class="text-look">Testing events here</p>
             <a class="link-btn" href="#">Test Link</a>
           </article>
     </section>
 </div>
 
-<div class="container">
-    <section class="yelp-pull">
-      <h1>Text Test</h1>
-      <div class="yelp-display">
-        {{#each print}}
-            <img src="{{image_url}}">
-            <p>{{name}}</p>
-            <p>{{location.city}}</p>
-        {{/each}}
-    </div>
-    </section>
-</div>
