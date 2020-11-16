@@ -8,7 +8,7 @@ a {
 }
 
 .title {
-  font-size: 50px;
+  font-size: 45px;
 }
 .subtitle {
   color: white;
@@ -35,8 +35,8 @@ nav {
 .container {
   background-color: black;
   color: white;
-  display: flex;
-  margin-top: 50px;
+ 
+
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -49,14 +49,14 @@ nav {
 .profile-information {
   display: flex;
   flex-direction: row;
-  height: 700px;
+  height: 500px;
   align-items: center;
   justify-content: center;
 }
 
 .profile-info {
   background-color: white;
-  height: 500px;
+  height: 400px;
   margin: 20px;
   padding: 20px;
   box-shadow: -10px -10px rgb(194, 194, 194);
@@ -72,21 +72,4 @@ nav {
 
 .yelp-display img {
   width: 20%;
-}
-
-.map {
-  width: 3000px;
-}
-
-#map {
-  height: 400px;
-  width: 100%;
-  box-shadow: 10px 10px rgb(0, 0, 0);;
-}
-
-.map-search {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
 }
