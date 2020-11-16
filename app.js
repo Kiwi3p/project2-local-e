@@ -70,8 +70,7 @@ app.use('/', index);
 const auth = require('./routes/auth');
 app.use('/', auth);
 
-const yelp = require('./routes/yelp');
-app.use('/', yelp);
+
 
 
 

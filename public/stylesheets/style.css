@@ -19,13 +19,6 @@ nav {
   margin: 0 20px 20px;
 }
 
-.yelp-display {
-  overflow:hidden; overflow-y:scroll;
-}
-
-
-
-
 
 .intro-desc {
   color: white;
@@ -49,14 +42,14 @@ nav {
 .profile-information {
   display: flex;
   flex-direction: row;
-  height: 500px;
+  height: 700px;
   align-items: center;
   justify-content: center;
 }
 
 .profile-info {
   background-color: white;
-  height: 400px;
+  height: 600px;
   margin: 20px;
   padding: 20px;
   box-shadow: -10px -10px rgb(194, 194, 194);
@@ -68,10 +61,6 @@ nav {
 
 .profile-header {
   margin-left: 22px;
-}
-
-.yelp-display img {
-  width: 20%;
 }
 
 .map {

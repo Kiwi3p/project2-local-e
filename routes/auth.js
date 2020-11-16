@@ -87,7 +87,7 @@ router.post('/signup', (req, res) => {
       User.create({ username, email, password: hashPassword, location})
       // so it only creates after checking
       .then(() => {
-        res.redirect('/profile/dashboard');
+        res.redirect('/profile');
       })
       .catch((err) => {  // From DATABASE
         if (err.code === 11000) {  // code message form MongoDB
