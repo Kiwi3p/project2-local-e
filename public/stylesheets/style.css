@@ -43,3 +43,7 @@ a {
 .profile-header {
   margin-left: 22px;
 }
+
+.yelp-display img {
+  width: 20%;
+}
