@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -18,16 +17,25 @@ a {
 .subtitle {
     color: white;
 }
+
+.intro-desc {
+  color: white;
+  font-size: 40px;
+}
+
 .container {
   background-color: black;
   color: white;
+  display: flex;
+  margin-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .main-container {
+  padding: 50px;
   display: flex;
 }
-
-
 
 .profile-information {
   display: flex;
