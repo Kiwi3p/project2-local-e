@@ -20,8 +20,6 @@ function requireLogin(req, res, next) {
 
     //profile
     router.get('/profile', requireLogin, (req, res) => {
-     
-      //req.session.currentUser = user;
       let storedLocation = req.session.currentUser.location;
   
       console.log(storedLocation)
