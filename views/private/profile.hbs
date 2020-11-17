@@ -49,20 +49,33 @@
       service.textSearch(request, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (let i = 0; i < results.length; i++) {
+            let name = results[i].name;
+            let address = results[i].formatted_address;
+            let place_id = results[i].place_id;
            let lat = results[i].geometry.location.lat();
            let lng = results[i].geometry.location.lng();
-            setMarker({ lat, lng });
+            setMarker({ lat, lng }, name);
+            console.log(results[i]);
           }
+          
         }
       });
     }
-    function setMarker(marker) {
-        new google.maps.Marker({
-          position: marker,
-          map: map
-        })
-      }
 
+   
+  function setMarker(marker, name) {
+    // console.log(‘marker’, marker);
+    let customMarker = new google.maps.Marker({
+      position: marker,
+      map: map
+    });
+    const infowindow = new google.maps.InfoWindow({
+      content: name,
+    });
+    customMarker.addListener("click", () => {
+      infowindow.open(map, customMarker);
+    });
+  }
 
 
   function getCurrentLocation() {
