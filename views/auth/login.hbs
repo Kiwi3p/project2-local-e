@@ -1,27 +1,25 @@
 <div class="main-container">
       <br />
       <br>
-  <div class="container">
+  <div class="container login-container login-div">
     <br />
     <br>
-    <p>Already have an account? </p>
-  <h3>LOGIN!</h3>
+    <p class="mini-title">Already have an account? </p>
+  <h3 class="mini-title">LOGIN!</h3>
   {{!-- We are createing a session --}}
   <form action='/login' method="POST">
     {{!-- we are persisting something so it is a POST --}}
     <label>
-      Username
       <input type="text" name="username" placeholder="Enter username" required>
     </label>
     <br />
     <br>
     <label>
-      Password
       <input type="password" name="password" placeholder="Enter password" required>
     </label>
     <br />
     <br>
-    <button type="submit">Login</button>
+    <button type="submit" class="btn-login">Login</button>
       <br />
       <br>
     {{#if errorMessage}}
@@ -32,37 +30,37 @@
   </div>
     <br />
     <br>
-  <div class="container">
+  <div class="container login-container">
         <br />
         <br>
-    <p>First time? </p>
-    <h3>SIGN UP!</h3>
+    <p class="mini-title">First time? </p>
+    <h3 class="mini-title">SIGN UP!</h3>
   
     <form action='/signup' method="POST">
       {{!--  route where you will fall when you submit the form "action" --}}
       <label>
-        Username
+   
         <input type="text" name="username" placeholder="Enter username" required>
         {{!-- required!! For FrontEnd validations --}}
       </label>
       <br />
       <br>
       <label>
-        Email
+
         <input type="email" name="email" placeholder="Enter email" required>
         {{!-- type email!! and REQUIRED For FrontEnd validations --}}
       </label>
       <br />
       <br>
       <label>
-        Password
+
         <input type="password" name="password" placeholder="Enter password" required>
         {{!-- type password!! and REQUIRED For FrontEnd validations --}}
       </label>
       <br />
       <br>
       <label>
-        Location
+
         <input type="location" name="location" placeholder="Enter default location">
       </label>
       <label>
@@ -70,7 +68,7 @@
       </label>
       <br />
       <br>
-      <button type="submit">Register</button>
+      <button type="submit" class="btn-login">Register</button>
           <br />
           <br>
       {{#if errorMessage}}

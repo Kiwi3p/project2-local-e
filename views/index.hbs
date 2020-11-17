@@ -1,27 +1,26 @@
-<div class="container">
+<div class="container intro-container">
   <br />
   <br>
   <div class="intro">
-        <br />
-        <br>
-<h1 class="title">{{title}}</h1>
+    <br />
+    <br>
+  <img src="images/logo-branco.png">
+{{!-- <h1 class="title">{{title</h1> --}}
 <p class="subtitle">{{subtitle}}!</p>
 <hr/>
+<br>
+{{#if user}}
+<button class="btn-enter"><a class="btn-enter" href="/profile">Access</a></button>
+{{else}}
+<button class="btn-enter"><a  class="btn-enter" href="/login">Access</a></button>
+{{/if}}
+  <br/>
+  <br>
+
 <p class="intro-desc">Your neighborhood guide</p>
     <br />
     <br>
 </div>
 
-<div>
-      <br />
-      <br>
-{{#if user}}
-<button><a class="btn-enter" href="/profile">Enter</a></button>
 
-{{else}}
-<button><a class="btn-enter" href="/login">Enter</a></button>
-{{/if}}
-      <br/>
-      <br>
-</div>
 </div>
