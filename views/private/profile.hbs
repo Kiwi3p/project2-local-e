@@ -28,14 +28,42 @@
 <input type="hidden" id="storeLocationInput" value={{thisLocation}}>
 
 <script>
+  //ONLOAD 
   let map;
   function initMap() {
     let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
     map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 13,
+      zoom: 14,
       center: savedLocation
     });
+    searchPlaces();
   } 
+  function searchPlaces() {
+      let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
+      let request = {
+        location: savedLocation,
+        query: ['vegan', 'mercado', 'bio']
+
+      }
+      let service = new google.maps.places.PlacesService(map);
+      service.textSearch(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (let i = 0; i < results.length; i++) {
+           let lat = results[i].geometry.location.lat();
+           let lng = results[i].geometry.location.lng();
+            setMarker({ lat, lng });
+          }
+        }
+      });
+    }
+    function setMarker(marker) {
+        new google.maps.Marker({
+          position: marker,
+          map: map
+        })
+      }
+
+
 
   function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition((position) => {
