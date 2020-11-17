@@ -114,8 +114,12 @@ function myFunction(name, address, place_id) {
           <div class="market-info" class="market-info">
               <div class="market-name">Market Name: ${name}</div>
               <div class="market-address">Address: ${address}</div>
-              <div class="market-id">id: ${place_id}</div>
-              <a href="#" class="market-link">Add to Favorites</a>
+              <form action='/favorites/create' method='POST'>
+                <input type='hidden' name='name' value='${name}' >
+                <input type='hidden' name='address' value='${address}' >
+                <input type='hidden' name='place_id' value='${place_id}' >
+                <button type='submit' class="submit btn-fav" >Add to Favorites</button>
+              </form>
               <hr>
           </div>
           `
