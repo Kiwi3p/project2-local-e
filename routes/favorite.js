@@ -29,19 +29,21 @@ router.get('/favorites/create', requireLogin, (req, res) => {
 
 });
 
-
+//WORKING!!!
 //Create favorites(delete later as this is just to get database going)
 router.post('/favorites/create', requireLogin,(req, res) => {
-  let {id, name, address} = req.body;
+  let {place_id, name, address} = req.body;
+  console.log('req.body',req.body);
   Favorite.create({
     user: req.session.currentUser._id,
-    id: id,
+    id: place_id,
     name: name,
     address: address
   }).then(() => {
-    res.redirect('/favorites')
+    res.redirect('/profile')
   });
 });
+
 
 router.post('/favorites/:favoritesId/delete', requireLogin, (req, res) => {
   let favoritesId = req.params.favoritesId;

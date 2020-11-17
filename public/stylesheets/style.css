@@ -104,8 +104,16 @@ input {
   justify-content: center;
 }
 
+.btn-fav {
+  border: none;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 3px;
+  margin: auto;
+  color: #39AFEA;
+  padding: 5px 30px;
 
-
+}
 
 .profile-info {
   background-color: white;

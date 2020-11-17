@@ -51,27 +51,36 @@
           for (let i = 0; i < results.length; i++) {
             let name = results[i].name;
             let address = results[i].formatted_address;
+            debugger;
             let place_id = results[i].place_id;
            let lat = results[i].geometry.location.lat();
            let lng = results[i].geometry.location.lng();
-            setMarker({ lat, lng }, name);
-            console.log(results[i]);
-          }
-          
+            setMarker({lat, lng }, name, address, place_id);
+            
+          }          
         }
       });
     }
 
-   
-  function setMarker(marker, name) {
-    // console.log(‘marker’, marker);
+  function setMarker(marker, name, address, place_id) {
     let customMarker = new google.maps.Marker({
       position: marker,
       map: map
     });
+    
+    let markerAttributes =`${name}<br/> ${address}
+    <form action='/favorites/create' method='POST'>
+      <input type='hidden' name='name' value='${name}' >
+      <input type='hidden' name='address' value='${address}' >
+      <input type='hidden' name='place_id' value='${place_id}' >
+      <button type='submit' class="submit btn-fav" >Add to Favorites</button>
+    </form>
+      `;
+    
     const infowindow = new google.maps.InfoWindow({
-      content: name,
+      content: markerAttributes,
     });
+    
     customMarker.addListener("click", () => {
       infowindow.open(map, customMarker);
     });
