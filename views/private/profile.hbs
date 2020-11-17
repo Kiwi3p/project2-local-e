@@ -33,7 +33,7 @@
   function initMap() {
     let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
     map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 14,
+      zoom: 13,
       center: savedLocation
     });
     searchPlaces();
@@ -42,7 +42,7 @@
       let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
       let request = {
         location: savedLocation,
-        query: ['vegan', 'mercado', 'bio']
+        query: ['market', 'bio']
 
       }
       let service = new google.maps.places.PlacesService(map);
