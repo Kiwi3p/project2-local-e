@@ -134,3 +134,7 @@ input {
   align-items: center;
   justify-content: space-around;
 }
+
+.walk-score {
+  background-color: white;
+}
