@@ -1,5 +1,6 @@
 const express = require('express');
 const router  = express.Router();
+const axios = require('axios');
 
 function requireLogin(req, res, next) {
   if(req.session.currentUser) {
@@ -21,12 +22,28 @@ function requireLogin(req, res, next) {
     //profile  
     router.get('/profile', requireLogin, (req, res) => {
       let storedLocation = req.session.currentUser.location;
-      res.render('private/profile', {user: req.session.currentUser});
       console.log(storedLocation);
+    
+      axios
+        .get(`https://maps.googleapis.com/maps/api/geocode/json?address=${storedLocation}&key=${process.env.GOOGLE_MAPS_API_KEY}`
+        )       
+        .then((response) => {
+          console.log(response.data.results[0].geometry.location);
+          let geocodeLocation = response.data.results[0].geometry.location; 
+          let geocodeLocationStr = JSON.stringify(geocodeLocation);
+          res.render('private/profile', {user: req.session.currentUser, thisLocation: geocodeLocationStr});
+        })
+        
     });
     
     //map
     router.get('/map', requireLogin, (req, res) => {
+    /*   const markers = [
+    { lat: 38.7129146, lng: -9.1286218 },
+    { lat: 38.7117206, lng: -9.1264315 },
+    { lat: 38.7123872, lng: -9.1287935}
+  ];
+  let markersString = JSON.stringify(markers);  , { markers: markersString}*/
       res.render('private/profile');
     });
 

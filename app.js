@@ -1,7 +1,4 @@
 require('dotenv').config();
-//.env will be ignored by GIT 
-//npm install
-//helpers and middleware will ahve to be ran in both computers
 
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -58,7 +55,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
-
 // default value for title local
 app.locals.title = 'Local-E';
 app.locals.subtitle = 'Keep it Local';
@@ -69,6 +65,5 @@ app.use('/', index);
 
 const auth = require('./routes/auth');
 app.use('/', auth);
-
 
 module.exports = app;

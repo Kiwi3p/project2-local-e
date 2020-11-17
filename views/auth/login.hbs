@@ -6,9 +6,7 @@
     <br>
     <p class="mini-title">Already have an account? </p>
   <h3 class="mini-title">LOGIN!</h3>
-  {{!-- We are createing a session --}}
   <form action='/login' method="POST">
-    {{!-- we are persisting something so it is a POST --}}
     <label>
       <input type="text" name="username" placeholder="Enter username" required>
     </label>
@@ -25,11 +23,11 @@
     {{#if errorMessage}}
     <div class="error">{{errorMessage}}</div>
     {{/if}}
-
   </form>
   </div>
     <br />
     <br>
+
   <div class="container login-container">
         <br />
         <br>
@@ -37,34 +35,25 @@
     <h3 class="mini-title">SIGN UP!</h3>
   
     <form action='/signup' method="POST">
-      {{!--  route where you will fall when you submit the form "action" --}}
       <label>
-   
         <input type="text" name="username" placeholder="Enter username" required>
-        {{!-- required!! For FrontEnd validations --}}
       </label>
       <br />
       <br>
       <label>
-
         <input type="email" name="email" placeholder="Enter email" required>
-        {{!-- type email!! and REQUIRED For FrontEnd validations --}}
       </label>
       <br />
       <br>
       <label>
-
         <input type="password" name="password" placeholder="Enter password" required>
-        {{!-- type password!! and REQUIRED For FrontEnd validations --}}
       </label>
       <br />
       <br>
       <label>
-
-        <input type="location" name="location" placeholder="Enter default location">
+        <input type="location" name="location" placeholder="Enter default location" required>
       </label>
       <label>
-        
       </label>
       <br />
       <br>
@@ -74,9 +63,7 @@
       {{#if errorMessage}}
       <div class="error">{{errorMessage}}</div>
       {{/if}}
-    
     </form>
-  
   </div>
         <br />
         <br>
