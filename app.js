@@ -70,5 +70,7 @@ app.use('/', index);
 const auth = require('./routes/auth');
 app.use('/', auth);
 
+const favorite = require('./routes/favorite');
+app.use('/', favorite);
 
 module.exports = app;
