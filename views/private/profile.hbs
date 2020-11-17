@@ -18,10 +18,9 @@
             <p class="text-look">Favorite shops go here</p>
             <a class="link-btn" href="#">Test Link</a>
           </article>
-          <article class="container profile-info">
-            <h3>Favorite Farmers Markets</h3>
-            <p class="text-look">Transit options go here</p>
-            <a class="link-btn" href="#">Test Link</a>
+          <article class="container profile-info markets">
+            <h3>Farmers Markets</h3>
+            <div style="{ overflow: scroll; }" id="list-markets"></div>
           </article>
     </section>
 </div>
@@ -49,33 +48,41 @@
       service.textSearch(request, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (let i = 0; i < results.length; i++) {
+            let data = results;
             let name = results[i].name;
             let address = results[i].formatted_address;
             let place_id = results[i].place_id;
            let lat = results[i].geometry.location.lat();
            let lng = results[i].geometry.location.lng();
-            setMarker({ lat, lng }, name);
+            setMarker({ lat, lng }, name, address, place_id);
             console.log(results[i]);
+            listAllLocation(name, address, place_id);
           }
           
         }
       });
     }
 
-   
-  function setMarker(marker, name) {
-    // console.log(‘marker’, marker);
+  
+  function setMarker(marker, name, address, place_id) {
     let customMarker = new google.maps.Marker({
       position: marker,
       map: map
     });
+    let markerAttributes =`${name}<br/> ${address}
+    <button class="submit btn-fav" onclick="myFunction(name, address, place_id)" >Add to Favorites</button>`;
     const infowindow = new google.maps.InfoWindow({
-      content: name,
+      content: markerAttributes,
     });
     customMarker.addListener("click", () => {
       infowindow.open(map, customMarker);
     });
   }
+
+ 
+function myFunction(name, address, place_id) {
+  console.log("FAV", name, address, place_id)
+}
 
 
   function getCurrentLocation() {
@@ -89,4 +96,21 @@
   //showMarkers(markers);
   });
   }   
+  
+  let results = '';
+  function listAllLocation(name, address, place_id) {
+    
+          
+          results+= `
+          <div class="market-info" class="market-info">
+              <div class="market-name">Market Name: ${name}</div>
+              <div class="market-address">Address: ${address}</div>
+              <div class="market-id">id: ${place_id}</div>
+              <a href="#" class="market-link">Add to Favorites</a>
+              <hr>
+          </div>
+          `
+ 
+    document.getElementById('list-markets').innerHTML = results;
+  }
 </script>
