@@ -3,7 +3,7 @@
     <section class="profile-information dark-background">
           <article class="container profile-info map">
             <div class="map-search">
-            <h3>Map</h3>
+              <button type="submit" onclick="listAllFavorites()">Show Favorites</button>
             <form>
               <label>
                 <input type="text" name="location" placeholder="Enter location" required>
@@ -17,16 +17,19 @@
             <h3>Favorite Shops!</h3>
             <p class="text-look">Favorite shops go here</p>
             <a class="link-btn" href="#">Test Link</a>
+            <article class="container profile-info" id="fav-market"></article>
           </article>
           <article class="container profile-info markets">
             <h3>Farmers Markets</h3>
-            <div style="{ overflow: scroll; }" id="list-markets"></div>
+            <div style="{ overflow: scroll; display: block; }" id="list-markets"></div>
           </article>
     </section>
 </div>
 <input type="hidden" id="storeLocationInput" value={{thisLocation}}>
 
 <script>
+
+  
   //ONLOAD 
   let map;
   function initMap() {
@@ -110,7 +113,7 @@ function myFunction(name, address, place_id) {
     
           
           results+= `
-          <div class="market-info" class="market-info">
+          <div class="market-info" id="market-info">
               <div class="market-name">Market Name: ${name}</div>
               <div class="market-address">Address: ${address}</div>
               <form action='/favorites/create' method='POST'>
@@ -125,4 +128,58 @@ function myFunction(name, address, place_id) {
  
     document.getElementById('list-markets').innerHTML = results;
   }
+let dbResults
+let myFavorites = '';
+function listAllFavorites(name, address, place_id) {
+   let listDiv = document.getElementById('list-markets');
+   listDiv.innerHTML = '';
+   getFavorites()
+   .then(() => {
+     console.log(dbResults);
+   dbResults.forEach((favorites) => {
+      myFavorites += `<div>
+                <h3>${favorites.name}</h3>
+                <h4>${favorites.address}</h4>
+                <!-- we can only have post requests on forms -->
+                <form action="/favorites/${favorites._id}/delete" method="POST">
+                  <button type="submit">Delete</button>
+                </form>
+              </div>`
+   })
+   /*myFavorites = `
+            <h3>Favorite Shops!</h3>
+            {{#each favorites}}
+              <div>
+                <h3>{{name}}</h3>
+                <h4>{{address}}</h4>
+                <a href="/favorites/{{_id}}">See details</a>
+                <!-- we can only have post requests on forms -->
+                <form action="/favorites/{{_id}}/delete" method="POST">
+                  <button type="submit">Delete</button>
+                </form>
+              </div>
+            {{/each}}
+          ` */
+   listDiv.innerHTML = myFavorites;
+   console.log('testing button') ;  
+   })   
+}
+let list1 = document.getElementById('fav-market');
+function hideList() {
+  if (list1.style.display === 'block') {
+    list1.style.display = 'none'
+  }
+}
+
+function getFavorites() {
+  return axios
+    .get('/profile/favorites')
+    .then((resultFromDB) => {
+      console.log(resultFromDB);
+      dbResults = resultFromDB.data.favorites;
+      //console.log(result);
+      //return result
+
+    })
+}
 </script>
