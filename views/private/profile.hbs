@@ -59,7 +59,7 @@
            let lat = results[i].geometry.location.lat();
            let lng = results[i].geometry.location.lng();
             setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
-            listAllLocation(name, address, place_id, rating);
+            listAllLocation(name, address, place_id, rating, lat, lng);
           }
           
         }
@@ -110,7 +110,7 @@
 
   // SHOW SEARCH LIST 
   let results = '';
-  function listAllLocation(name, address, place_id, rating) {
+  function listAllLocation(name, address, place_id, rating, lat, lng) {
           results+= `
           <div class="market-info" id="market-info">
               <div class="market-name">Market Name: ${name}</div>
@@ -121,6 +121,8 @@
                 <input type='hidden' name='address' value='${address}' >
                 <input type='hidden' name='place_id' value='${place_id}' >
                 <input type='hidden' name='rating' value='${rating}' >
+                <input type='hidden' name='lat' value='${lat}' >
+                <input type='hidden' name='lng' value='${lng}' >
                 <button type='submit' class="submit btn-fav" >Add to Favorites</button>
               </form>
               <hr>
@@ -148,7 +150,7 @@ function listAllFavorites(name, address, place_id, lat, lng) {
                 <h3>${favorites.name}</h3>
                 <h4>${favorites.address}</h4>
                 <!-- we can only have post requests on forms -->
-                <form action="/favorites/${favorites._id}/delete" method="POST">
+                <form action="/profile/${favorites._id}/delete" method="POST">
                   <button type="submit">Delete</button>
                 </form>
               </div>`

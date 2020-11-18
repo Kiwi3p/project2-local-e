@@ -48,12 +48,12 @@ router.post('/favorites/create', requireLogin,(req, res) => {
 /*}); */
 
 //WORKING!!!
-router.post('/favorites/:favoritesId/delete', requireLogin, (req, res) => {
+router.post('/profile/:favoritesId/delete', requireLogin, (req, res) => {
   let favoritesId = req.params.favoritesId;
 //  let {id, name, address } = req.body;
   Favorite.findByIdAndDelete(favoritesId)
     .then(() => {
-    res.redirect('/favorites');
+    res.redirect('/profile');
   });
 });
 
