@@ -13,11 +13,12 @@ function requireLogin(req, res, next) {
 }
 //WORKING!!!
 //get favorites from Back-end
-router.get('/favorites', requireLogin, (req, res) => {
+router.get('/profile/favorites', (req, res) => {
   
   Favorite.find({user: req.session.currentUser._id})
   .then((allFavoritesFromDB) => {
-    res.render('private/favorite', {favorites: allFavoritesFromDB, user: req.session.currentUser});
+    //console.log(allFavoritesFromDB);
+    res.json( {favorites: allFavoritesFromDB });
   });
 });
 
