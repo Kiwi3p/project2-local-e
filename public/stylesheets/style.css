@@ -14,7 +14,9 @@ body {
 }
 
 .main-logo {
+  display: flex;
  margin: auto;
+ padding-top: 10px;
 }
 
 .title {
@@ -66,6 +68,12 @@ a:hover {
   padding: 0px;
 }
 
+.navbar-brand {
+  margin-right: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
 nav {
   margin: 0px;
 }
@@ -87,7 +95,7 @@ nav {
 }
 
 .main-container {
-  padding: 50px;
+  padding: 50px 150px;
   display: flex;
 }
 
@@ -124,7 +132,7 @@ input {
 }
 
 .login-div {
-  padding-top: 10%;
+  padding-top: 5%;
 }
 
 .profile-container {
@@ -135,7 +143,7 @@ input {
 .profile-information {
   display: flex;
   flex-direction: row;
-  height: 700px;
+  height: 650px;
   align-items: center;
   justify-content: center;
 }
@@ -154,7 +162,7 @@ input {
 .profile-info {
   background-color: white;
   height: 500px;
-  margin: 20px;
+  margin: 0px 20px;
   padding: 20px;
   box-shadow: -10px -10px rgb(194, 194, 194);
 }
@@ -192,4 +200,17 @@ p {
 
 .markets {
   overflow: scroll;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 110%;
+  background-color: #39AFEA;
+  padding-left: 40px;
+  color: #f7f9f9;
+  padding-top: 15px;
+}
+.footer {
+  color: white;
 }
