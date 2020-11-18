@@ -53,11 +53,11 @@ router.post('/signup', (req, res) => {
     return;
   }
 
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   if(!regex.test(password)) {
     res.render('auth/login' , 
     {
-      errorMessage: 'Password is not strong enough: needs at least 6 characters, one numebr and one uppercase'
+      errorMessage: 'Password is not strong enough: needs at least 6 characters, one number and one uppercase'
     })
     return;
   }
@@ -70,8 +70,9 @@ router.post('/signup', (req, res) => {
         })
         return;
       }
-      User.create({ username, email, password: hashPassword, location})
-      .then(() => {
+    return User.create({ username, email, password: hashPassword, location})
+      .then((user) => {
+        req.session.currentUser = user;
         res.redirect('/profile');
       })
       .catch((err) => { 

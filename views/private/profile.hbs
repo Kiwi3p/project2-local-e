@@ -27,10 +27,10 @@
 
 <script>
 
-  
-  //ONLOAD 
+//ONLOAD 
   let map;
   let firstMarkers = [];
+
   function initMap() {
     let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
     map = new google.maps.Map(document.getElementById("map"), {
@@ -39,6 +39,7 @@
     });
     searchPlaces();
   } 
+
   function searchPlaces() {
       let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
       let request = {
@@ -107,19 +108,7 @@
     });
   }
 
-// 
-  function getCurrentLocation() {
-  navigator.geolocation.getCurrentPosition((position) => {
-  const pos = {
-  lat: position.coords.latitude,
-  lng: position.coords.longitude
-  }
-  map.setCenter(pos);
-  map.setZoom(17);
-  //showMarkers(markers);
-  });
-  }   
-  
+  // SHOW SEARCH LIST 
   let results = '';
   function listAllLocation(name, address, place_id, rating, lat, lng) {
     let favoritesArray = JSON.parse(document.getElementById('favoritesArray').value);
@@ -154,6 +143,7 @@
     document.getElementById('list-markets').innerHTML = results;
   }
 
+
   //FAVS
 let dbResults
 let myFavorites = '';
@@ -162,13 +152,11 @@ function listAllFavorites(name, address, place_id, lat, lng) {
    listDiv.innerHTML = '';
    getFavorites()
    .then(() => {
-     console.log(dbResults);
+    console.log(dbResults);
 
-     let favoritesCoor = []
+    let favoritesCoor = []
     dbResults.forEach((favorites) => {
-
-       favoritesCoor.push({ lat: favorites.lat, lng: favorites.lng }) 
-
+      favoritesCoor.push({ lat: favorites.lat, lng: favorites.lng }) 
 
       myFavorites += `<div>
                 <h3>${favorites.name}</h3>
@@ -178,8 +166,7 @@ function listAllFavorites(name, address, place_id, lat, lng) {
                   <button type="submit">Delete</button>
                 </form>
               </div>`
-   })
-
+    })
 
     clearMarkers();
     showMarkers(favoritesCoor);
@@ -202,8 +189,6 @@ function getFavorites() {
     .then((resultFromDB) => {
       console.log(resultFromDB);
       dbResults = resultFromDB.data.favorites;
-      //console.log(result);
-      //return result
 
     })
 }
@@ -220,4 +205,17 @@ function getFavorites() {
     });
   }
   
+
+  // CURRENT LOCATION
+    function getCurrentLocation() {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+        map.setCenter(pos);
+        map.setZoom(17);
+      });
+    }   
+    
 </script>
