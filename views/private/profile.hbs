@@ -149,7 +149,7 @@ function listAllFavorites(name, address, place_id) {
                 <h3>${favorites.name}</h3>
                 <h4>${favorites.address}</h4>
                 <!-- we can only have post requests on forms -->
-                <form action="/favorites/${favorites._id}/delete" method="POST">
+                <form action="/profile/${favorites._id}/delete" method="POST">
                   <button type="submit">Delete</button>
                 </form>
               </div>`
@@ -197,5 +197,5 @@ function showMarkers(markers) {  //ARRAY
       setMarker(marker);
     })
   }
-  
+
 </script>
