@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const axios = require('axios');
+const Favorite = require('../models/Favorite');
 
 function requireLogin(req, res, next) {
   if(req.session.currentUser) {
@@ -31,7 +32,14 @@ function requireLogin(req, res, next) {
           console.log(response.data.results[0].geometry.location);
           let geocodeLocation = response.data.results[0].geometry.location; 
           let geocodeLocationStr = JSON.stringify(geocodeLocation);
-          res.render('private/profile', {user: req.session.currentUser, thisLocation: geocodeLocationStr});
+
+          Favorite.find().then((allFavoritesFromDB) => {
+             let favoritesIds = allFavoritesFromDB.map((favorite) => {
+                return favorite.id;
+             });
+             let favoritesIdsStr = JSON.stringify(favoritesIds);
+             res.render('private/profile', {user: req.session.currentUser, thisLocation: geocodeLocationStr, favorites: favoritesIdsStr});
+          });
         })
         
     });

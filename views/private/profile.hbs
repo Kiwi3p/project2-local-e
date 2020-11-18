@@ -20,7 +20,7 @@
     </section>
 </div>
 <input type="hidden" id="storeLocationInput" value={{thisLocation}}>
-{{!-- <input type="hidden" id="favoritesArray" value={{favorites> --}}
+<input type="hidden" id="favoritesArray" value="{{favorites}}">
 
 <script>
 
@@ -53,7 +53,7 @@
             let rating = results[i].rating;
            let lat = results[i].geometry.location.lat();
            let lng = results[i].geometry.location.lng();
-            setMarker({ lat, lng }, name, address, place_id, rating);
+            setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
             listAllLocation(name, address, place_id, rating);
           }
           
@@ -61,17 +61,17 @@
       });
     }
 
-  function setMarker(marker, name, address, place_id, rating) {
-   /* let favoritesArray = document.getElementById('favoritesArray').value;
-    console.log(favoritesArray)
+  function setMarker(marker, name, address, place_id, rating, lat, lng) {
+   let favoritesArray = JSON.parse(document.getElementById('favoritesArray').value);
+
     let text;
     favoritesArray.forEach(favorite => {
-      if(favorite.id === place_id) {
+      if(favorite === place_id) {
         text = 'Already a favorite'
       } else {
         text = 'Add to favorites'
       }
-    })*/
+    })
     let customMarker = new google.maps.Marker({
       position: marker,
       map: map
@@ -85,7 +85,9 @@
       <input type='hidden' name='address' value='${address}' >
       <input type='hidden' name='place_id' value='${place_id}' >
       <input type='hidden' name='rating' value='${rating}' >
-      <button type='submit' class="submit btn-fav" >Add to favorites</button>
+      <input type='hidden' name='lat' value='${lat}' >
+      <input type='hidden' name='lng' value='${lng}' >
+      <button type='submit' class="submit btn-fav" >${text}</button>
     </form>
       `;
     
