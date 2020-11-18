@@ -43,12 +43,6 @@ function requireLogin(req, res, next) {
     
     //map
     router.get('/profile', requireLogin, (req, res) => {
-    /*   const markers = [
-    { lat: 38.7129146, lng: -9.1286218 },
-    { lat: 38.7117206, lng: -9.1264315 },
-    { lat: 38.7123872, lng: -9.1287935}
-  ];
-  let markersString = JSON.stringify(markers);  , { markers: markersString}*/
       res.render('private/profile');
     });
 
