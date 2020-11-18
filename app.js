@@ -16,7 +16,7 @@ const session      = require('express-session');
 const MongoStore   = require('connect-mongo')(session); //store teh session information in Mongo
 
 mongoose
-  .connect('mongodb://localhost/local-e', {useNewUrlParser: true})//name of DB
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})//name of DB
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })

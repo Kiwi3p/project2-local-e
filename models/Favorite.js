@@ -10,7 +10,9 @@ const favoriteSchema = new Schema (
     id: String,
     name: String,
     address: String,
-    rating: String
+    rating: String,
+    lat: Number,
+    lng: Number
   }, {
     timestamps: true
   }
