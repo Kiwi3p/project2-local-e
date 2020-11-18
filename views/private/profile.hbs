@@ -3,7 +3,7 @@
     <section class="profile-information dark-background">
           <article class="container profile-info map">
             <div class="map-search">
-            <h3>Map</h3>
+            
             <form>
               <label>
                 <input type="text" name="location" placeholder="Enter location" required>
@@ -25,6 +25,7 @@
     </section>
 </div>
 <input type="hidden" id="storeLocationInput" value={{thisLocation}}>
+{{!-- <input type="hidden" id="favoritesArray" value={{favorites> --}}
 
 <script>
   //ONLOAD 
@@ -52,29 +53,42 @@
             let name = results[i].name;
             let address = results[i].formatted_address;
             let place_id = results[i].place_id;
+            let rating = results[i].rating;
            let lat = results[i].geometry.location.lat();
            let lng = results[i].geometry.location.lng();
-            setMarker({ lat, lng }, name, address, place_id);
-            console.log(results[i]);
-            listAllLocation(name, address, place_id);
+            setMarker({ lat, lng }, name, address, place_id, rating);
+            listAllLocation(name, address, place_id, rating);
           }
           
         }
       });
     }
 
-  function setMarker(marker, name, address, place_id) {
+  function setMarker(marker, name, address, place_id, rating) {
+   /* let favoritesArray = document.getElementById('favoritesArray').value;
+    console.log(favoritesArray)
+    let text;
+    favoritesArray.forEach(favorite => {
+      if(favorite.id === place_id) {
+        text = 'Already a favorite'
+      } else {
+        text = 'Add to favorites'
+      }
+    })*/
     let customMarker = new google.maps.Marker({
       position: marker,
       map: map
     });
     
-    let markerAttributes =`${name}<br/> ${address}
+    let markerAttributes =`${name}<br/> 
+    ${address}<br/>
+    Rating: ${rating}/5
     <form action='/favorites/create' method='POST'>
       <input type='hidden' name='name' value='${name}' >
       <input type='hidden' name='address' value='${address}' >
       <input type='hidden' name='place_id' value='${place_id}' >
-      <button type='submit' class="submit btn-fav" >Add to Favorites</button>
+      <input type='hidden' name='rating' value='${rating}' >
+      <button type='submit' class="submit btn-fav" >Add to favorites</button>
     </form>
       `;
     
@@ -86,11 +100,6 @@
       infowindow.open(map, customMarker);
     });
   }
-
- 
-function myFunction(name, address, place_id) {
-  console.log("FAV", name, address, place_id)
-}
 
 
   function getCurrentLocation() {
@@ -106,17 +115,17 @@ function myFunction(name, address, place_id) {
   }   
   
   let results = '';
-  function listAllLocation(name, address, place_id) {
-    
-          
+  function listAllLocation(name, address, place_id, rating) {
           results+= `
           <div class="market-info" class="market-info">
               <div class="market-name">Market Name: ${name}</div>
               <div class="market-address">Address: ${address}</div>
+              <div class="market-rating">Rating: ${rating}/5</div>
               <form action='/favorites/create' method='POST'>
                 <input type='hidden' name='name' value='${name}' >
                 <input type='hidden' name='address' value='${address}' >
                 <input type='hidden' name='place_id' value='${place_id}' >
+                <input type='hidden' name='rating' value='${rating}' >
                 <button type='submit' class="submit btn-fav" >Add to Favorites</button>
               </form>
               <hr>

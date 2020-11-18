@@ -11,7 +11,7 @@ function requireLogin(req, res, next) {
     res.redirect('/login');
   }
 }
-
+//WORKING!!!
 //get favorites from Back-end
 router.get('/favorites', requireLogin, (req, res) => {
   
@@ -21,33 +21,33 @@ router.get('/favorites', requireLogin, (req, res) => {
   });
 });
 
-router.get('/favorites/create', requireLogin, (req, res) => {
-  User.find()
-  .then((allTheUsersFromDB) => {
-    res.render('private/favorite-create', {users: allTheUsersFromDB})
-  })
-
-});
 
 //WORKING!!!
-//Create favorites(delete later as this is just to get database going)
 router.post('/favorites/create', requireLogin,(req, res) => {
-  let {place_id, name, address} = req.body;
-  console.log('req.body',req.body);
-  Favorite.create({
-    user: req.session.currentUser._id,
-    id: place_id,
-    name: name,
-    address: address
-  }).then(() => {
-    res.redirect('/profile')
+  let {place_id, name, address, rating} = req.body;
+  console.log('req.body', req.body);
+
+  /*Favorite.findOne({'id': place_id})
+      .then((favorite) => {
+        if(favorite) {   
+         alert (`This is already a Favorite`) 
+        } */
+    Favorite.create({
+      user: req.session.currentUser._id,
+      id: place_id,
+      name: name,
+      address: address,
+      rating: rating
+    }).then(() => {
+      res.redirect('/profile')
+    });
   });
-});
+/*}); */
 
-
+//WORKING!!!
 router.post('/favorites/:favoritesId/delete', requireLogin, (req, res) => {
   let favoritesId = req.params.favoritesId;
-  let {id, name, address } = req.body;
+//  let {id, name, address } = req.body;
   Favorite.findByIdAndDelete(favoritesId)
     .then(() => {
     res.redirect('/favorites');
