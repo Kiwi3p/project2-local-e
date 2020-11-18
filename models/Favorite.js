@@ -9,7 +9,8 @@ const favoriteSchema = new Schema (
     },
     id: String,
     name: String,
-    address: String
+    address: String,
+    rating: String
   }, {
     timestamps: true
   }

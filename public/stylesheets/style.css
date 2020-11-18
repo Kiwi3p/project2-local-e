@@ -37,6 +37,7 @@ body {
   color: black;
   font-size: 25px;
   text-align: center;
+  margin-bottom: 150px;
 }
 
 a {
@@ -203,13 +204,15 @@ p {
 }
 
 footer {
-  position: fixed;
+  margin-top: 5px;
+  margin-bottom: 0px;
   bottom: 0;
   width: 110%;
   background-color: #39AFEA;
   padding-left: 40px;
   color: #f7f9f9;
   padding-top: 15px;
+  padding-bottom: 10px;
 }
 .footer {
   color: white;
