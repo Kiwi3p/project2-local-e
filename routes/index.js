@@ -37,7 +37,7 @@ function requireLogin(req, res, next) {
     });
     
     //map
-    router.get('/map', requireLogin, (req, res) => {
+    router.get('/profile', requireLogin, (req, res) => {
     /*   const markers = [
     { lat: 38.7129146, lng: -9.1286218 },
     { lat: 38.7117206, lng: -9.1264315 },

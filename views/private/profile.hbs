@@ -4,6 +4,9 @@
           <article class="container profile-info map">
             <div class="map-search">
               <button type="submit" onclick="listAllFavorites()">Show Favorites</button>
+              <form action="/profile">
+              <button type="submit">Show Markets Near Me</button>
+              </form>
             <form>
               <label>
                 <input type="text" name="location" placeholder="Enter location" required>
@@ -158,6 +161,7 @@ function listAllFavorites(name, address, place_id) {
    console.log('testing button') ;  
    })   
 }
+
 let list1 = document.getElementById('fav-market');
 function hideList() {
   if (list1.style.display === 'block') {
@@ -176,4 +180,11 @@ function getFavorites() {
 
     })
 }
+
+function showMarkers(markers) {  //ARRAY
+    markers.forEach((marker) => {
+      setMarker(marker);
+    })
+  }
+  
 </script>
