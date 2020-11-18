@@ -30,6 +30,7 @@
   
   //ONLOAD 
   let map;
+  let firstMarkers = [];
   function initMap() {
     let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
     map = new google.maps.Map(document.getElementById("map"), {
@@ -66,10 +67,11 @@
 
   function setMarker(marker, name, address, place_id, rating, lat, lng) {
    let favoritesArray = JSON.parse(document.getElementById('favoritesArray').value);
-
+     console.log('favoritesArray', favoritesArray)
+    
     let text;
     favoritesArray.forEach(favorite => {
-      if(favorite === place_id) {
+      if(favorite.id === place_id) {
         text = 'Already a favorite'
       } else {
         text = 'Add to favorites'
@@ -79,6 +81,8 @@
       position: marker,
       map: map
     });
+
+    firstMarkers.push(customMarker);
     
     let markerAttributes =`${name}<br/> 
     ${address}<br/>
@@ -103,7 +107,7 @@
     });
   }
 
-
+// 
   function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition((position) => {
   const pos = {
@@ -133,18 +137,25 @@
               <hr>
           </div>
           `
- 
     document.getElementById('list-markets').innerHTML = results;
   }
+
+  //FAVS
 let dbResults
 let myFavorites = '';
-function listAllFavorites(name, address, place_id) {
+function listAllFavorites(name, address, place_id, lat, lng) {
    let listDiv = document.getElementById('list-markets');
    listDiv.innerHTML = '';
    getFavorites()
    .then(() => {
      console.log(dbResults);
-   dbResults.forEach((favorites) => {
+
+     let favoritesCoor = []
+    dbResults.forEach((favorites) => {
+
+       favoritesCoor.push({ lat: favorites.lat, lng: favorites.lng }) 
+
+
       myFavorites += `<div>
                 <h3>${favorites.name}</h3>
                 <h4>${favorites.address}</h4>
@@ -154,20 +165,11 @@ function listAllFavorites(name, address, place_id) {
                 </form>
               </div>`
    })
-   /*myFavorites = `
-            <h3>Favorite Shops!</h3>
-            {{#each favorites}}
-              <div>
-                <h3>{{name}}</h3>
-                <h4>{{address}}</h4>
-                <a href="/favorites/{{_id}}">See details</a>
-                <!-- we can only have post requests on forms -->
-                <form action="/favorites/{{_id}}/delete" method="POST">
-                  <button type="submit">Delete</button>
-                </form>
-              </div>
-            {{/each}}
-          ` */
+
+
+    clearMarkers();
+    showMarkers(favoritesCoor);
+
    listDiv.innerHTML = myFavorites;
    console.log('testing button') ;  
    })   
@@ -192,10 +194,16 @@ function getFavorites() {
     })
 }
 
-function showMarkers(markers) {  //ARRAY
-    markers.forEach((marker) => {
+  function showMarkers(favoritesCoor) {  //ARRAY
+    favoritesCoor.forEach((marker) => {
       setMarker(marker);
     })
   }
 
+  function clearMarkers() {
+    firstMarkers.forEach((marker) => {
+      marker.setMap(null);
+    });
+  }
+  
 </script>

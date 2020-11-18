@@ -25,7 +25,7 @@ router.get('/profile/favorites', (req, res) => {
 
 //WORKING!!!
 router.post('/favorites/create', requireLogin,(req, res) => {
-  let {place_id, name, address, rating} = req.body;
+  let {place_id, name, address, rating, lat, lng} = req.body;
   console.log('req.body', req.body);
 
   /*Favorite.findOne({'id': place_id})
@@ -38,7 +38,9 @@ router.post('/favorites/create', requireLogin,(req, res) => {
       id: place_id,
       name: name,
       address: address,
-      rating: rating
+      rating: rating,
+      lat: lat, 
+      lng: lng
     }).then(() => {
       res.redirect('/profile')
     });

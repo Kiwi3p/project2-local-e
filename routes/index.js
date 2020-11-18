@@ -34,11 +34,8 @@ function requireLogin(req, res, next) {
           let geocodeLocationStr = JSON.stringify(geocodeLocation);
 
           Favorite.find().then((allFavoritesFromDB) => {
-             let favoritesIds = allFavoritesFromDB.map((favorite) => {
-                return favorite.id;
-             });
-             let favoritesIdsStr = JSON.stringify(favoritesIds);
-             res.render('private/profile', {user: req.session.currentUser, thisLocation: geocodeLocationStr, favorites: favoritesIdsStr});
+             let allFavoritesFromDBStr = JSON.stringify(allFavoritesFromDB);
+             res.render('private/profile', {user: req.session.currentUser, thisLocation: geocodeLocationStr, favorites: allFavoritesFromDBStr});
           });
         })
         
