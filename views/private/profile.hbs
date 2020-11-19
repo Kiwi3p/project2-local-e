@@ -97,6 +97,7 @@
       <input type='hidden' name='lng' value='${lng}' >
       <button type='submit' class="submit btn-fav" >${text}</button>
     </form>
+    <button type='submit' class="submit btn-fav" onclick="calcRoute(${lat}, ${lng})">Get there</button>
       `;
     
     const infowindow = new google.maps.InfoWindow({
@@ -158,10 +159,59 @@
     document.getElementById('list-markets').innerHTML = divClear;
   }
 
+/*Get directions activates getdirection();
+  let directionsService;
+  let directionsRenderer;
+
+function initialize() {
+    let directionsService = new google.maps.DirectionsService();
+    let directionsRenderer = new google.maps.DirectionsRenderer();
+} */
+ 
+  function calcRoute(lat, lng) {
+    //initialize();
+    let directionsService = new google.maps.DirectionsService();
+    let directionsRenderer = new google.maps.DirectionsRenderer();
+    getCurrentLocation(lat, lng) ;
+
+    function getCurrentLocation(lat, lng) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+        console.log(`lat`, lat, `lng`, lng, `pos`, pos)
+        let start = pos;
+        let end = { lat, lng };
+        let request = {
+          origin: start,
+          destination: end,
+          travelMode: 'DRIVING'
+        };
+
+        directionsService.route(request, (result, status) => {
+          if (status === 'OK') {
+            directionsRenderer.setDirections(result);
+          }
+        });
+      directionsRenderer.setMap(map);
+      })
+    }
+  }
+
+       /* function clearRoute() {
+          // Clear past routes
+        directionsRenderer.setMap(null)
+        } */
+
   //FAVS
 let dbResults
 let myFavorites = '';
 function listAllFavorites(name, address, place_id, lat, lng) {
+   //console.log(directionsRenderer);
+   //if (!directionsRenderer) {
+   //clearRoute(); }
+   
    let listDiv = document.getElementById('list-markets');
    listDiv.innerHTML = '';
    getFavorites()
@@ -186,7 +236,6 @@ function listAllFavorites(name, address, place_id, lat, lng) {
     showMarkers(favoritesCoor);
 
    listDiv.innerHTML = myFavorites;
-   console.log('testing button') ;  
    })   
 }
 
@@ -255,7 +304,6 @@ function getFavorites() {
             }
           })
         }
-
       })
     }
     //let userSearch = ;

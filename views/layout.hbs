@@ -8,6 +8,7 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/2f1cc098b7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
@@ -23,9 +24,6 @@
       <li class="nav-item">
         <a class="nav-link" href="/profile">{{user.username}}</a>
       </li>
-       {{!-- <li class="nav-item">
-        <a class="nav-link" href="/favorites">Favorites</a>
-      </li>  --}}
       <li class="nav-item btn-enter">
         <form action='/logout' method="POST">
           <button type="submit" class="btn-fav ">Logout</button>
@@ -38,10 +36,24 @@
 
   {{{body}}}
 
-<footer >
-  <p><span class="footer"> with love by IronHack </span></p>
-</footer>
+<div >
+  <article class="social-media"><strong> Follow us </strong>
+  <br/>
+  <br />
+    <a href="#"><i class="fa fa-facebook-square" style="font-size:36px"></i></a>
+    <a href="#"><i class="fa fa-instagram" style="font-size:36px"></i></a>
+    <a href="#"><i class="fa fa-twitter-square" style="font-size:36px"></i></a>
+    </article> 
+</div>
 
+<footer>
+ <div id="footer">
+  <p class="footer"><div><span> From our 🤍 to yours © 2020 </span></div>
+  <div><span id="github-link"><a id="open-src" rel="GitHub" href="https://github.com/Kiwi3p/project2-local-e" target="_blank"> Open-source code,
+  </a> by AliLop 👩‍💻 and Kiwi3p 👨‍💻</span></div></p>
+
+  </div>
+</footer>
 
   <script src="/javascripts/script.js"></script>
   <script
