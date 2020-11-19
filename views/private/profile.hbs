@@ -152,6 +152,11 @@
           `
     document.getElementById('list-markets').innerHTML = resultRefresh;
   }
+  let divClear;
+  function clearDivs() {
+    divClear = ``;
+    document.getElementById('list-markets').innerHTML = divClear;
+  }
 
   //FAVS
 let dbResults
@@ -224,7 +229,7 @@ function getFavorites() {
         }
         map.setCenter(pos);
         map.setZoom(17);
-        
+        clearMarkers();
         searchPlaces();
         function searchPlaces() {
             let request = {
@@ -255,6 +260,8 @@ function getFavorites() {
     }
     //let userSearch = ;
     function searchLocation() {
+      //clearDivs();
+      clearMarkers();
       let keyword = document.getElementById('customLocation').value
       const geocoder = new google.maps.Geocoder();
       geocoder.geocode({ 'address': keyword}, (results, status) => {
@@ -263,6 +270,8 @@ function getFavorites() {
           let lng = results[0].geometry.location.lng();
           searchPlaces({ lat, lng});
           map.setCenter({ lat, lng});
+          setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
+          listAllNewLocation(name, address, place_id, rating, lat, lng);
         } 
       });
 
