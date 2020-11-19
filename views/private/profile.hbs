@@ -59,6 +59,7 @@
            let lat = results[i].geometry.location.lat();
            let lng = results[i].geometry.location.lng();
             setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
+            clearDivs();
             listAllLocation(name, address, place_id, rating, lat, lng);
           }
           
@@ -153,6 +154,11 @@ debugger;
           </div>
           `
     document.getElementById('list-markets').innerHTML = resultRefresh;
+  }
+  let divClear;
+  function clearDivs() {
+    divClear = ``;
+    document.getElementById('list-markets').innerHTML = divClear;
   }
 
 /*Get directions activates getdirection();
@@ -277,7 +283,6 @@ function getFavorites() {
         map.setCenter(pos);
         map.setZoom(17);
         clearMarkers();
-
         searchPlaces();
         function searchPlaces() {
             let request = {
@@ -307,6 +312,8 @@ function getFavorites() {
     }
     //let userSearch = ;
     function searchLocation() {
+      clearDivs();
+      clearMarkers();
       let keyword = document.getElementById('customLocation').value
       const geocoder = new google.maps.Geocoder();
       geocoder.geocode({ 'address': keyword}, (results, status) => {
@@ -314,6 +321,31 @@ function getFavorites() {
           let lat = results[0].geometry.location.lat();
           let lng = results[0].geometry.location.lng();
           searchPlaces({ lat, lng});
+          function searchPlaces(keyword) {
+ 
+     // let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
+      let request = {
+        location: keyword,
+        query: ['market', 'bio']
+
+      }
+      let service = new google.maps.places.PlacesService(map);
+      service.textSearch(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (let i = 0; i < results.length; i++) {
+            let data = results;
+            let name = results[i].name;
+            let address = results[i].formatted_address;
+            let place_id = results[i].place_id;
+            let rating = results[i].rating;
+           let lat = results[i].geometry.location.lat();
+           let lng = results[i].geometry.location.lng();
+            setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
+            listAllNewLocation(name, address, place_id, rating, lat, lng);
+          }
+        }
+      });
+    }
           map.setCenter({ lat, lng});
         } 
       });
