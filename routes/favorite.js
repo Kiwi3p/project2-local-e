@@ -45,7 +45,7 @@ router.post('/profile/:favoritesId/delete', requireLogin, (req, res) => {
   let favoritesId = req.params.favoritesId;
   Favorite.findByIdAndDelete(favoritesId)
     .then(() => {
-    res.redirect('/profile');
+    res.redirect('/profile?showOnlyFavorites=true');
   });
 });
 

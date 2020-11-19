@@ -29,6 +29,10 @@
 //ONLOAD 
   let map;
   let firstMarkers = [];
+  //get params on URL from BAKEND call
+  const urlParams = new URLSearchParams(window.location.search);
+  //Searches all // gets onlyteh one we tell it to GET
+  const showOnlyFavorites = urlParams.get('showOnlyFavorites');
 
   function initMap() {
     let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
@@ -36,7 +40,10 @@
       zoom: 13,
       center: savedLocation
     });
-    searchPlaces(savedLocation);
+
+    if (!showOnlyFavorites) {
+     searchPlaces(savedLocation);
+    }
   } 
 
   function searchPlaces(keyword) {
@@ -54,7 +61,6 @@
           for (let i = 0; i < results.length; i++) {
             let data = results;
             let photoArray = results[0].photos[0];
-            console.log(data[0].photos[0]);
             let image = (results[i].photos !== undefined) ?
                         (results[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})) :
                         '/images/losticon.png';
@@ -64,7 +70,6 @@
                       } else {
                         results[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
                         };*/
-            console.log(image);
             let name = results[i].name;
             let address = results[i].formatted_address;
             let place_id = results[i].place_id;
@@ -196,7 +201,6 @@ function initialize() {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         }
-        console.log(`lat`, lat, `lng`, lng, `pos`, pos)
         let start = pos;
         let end = { lat, lng };
         let request = {
@@ -223,7 +227,7 @@ function initialize() {
   //FAVS
 let dbResults
 let myFavorites = '';
-function listAllFavorites(name, address, place_id, lat, lng) {
+function listAllFavorites() {
    //console.log(directionsRenderer);
    //if (!directionsRenderer) {
    //clearRoute(); }
@@ -233,7 +237,6 @@ function listAllFavorites(name, address, place_id, lat, lng) {
    document.getElementById('fav-list-header').innerHTML = 'My Favorites';
    getFavorites()
    .then(() => {
-    console.log(dbResults);
 
     
     clearMarkers();
@@ -274,7 +277,6 @@ function getFavorites() {
   return axios
     .get('/profile/favorites')
     .then((resultFromDB) => {
-      console.log(resultFromDB);
       dbResults = resultFromDB.data.favorites;
 
     })
@@ -311,7 +313,6 @@ function getFavorites() {
                 
                 let data = results;
                 let name = results[i].name;
-                console.log(name)
                 let address = results[i].formatted_address;
                 let place_id = results[i].place_id;
                 let rating = results[i].rating;
@@ -368,5 +369,7 @@ function getFavorites() {
     }
   
 
-
+if (showOnlyFavorites) {
+  listAllFavorites();
+}
 </script>
