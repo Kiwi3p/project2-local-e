@@ -79,6 +79,10 @@ a:hover {
   padding: 0px;
 }
 
+.navbar-expand-lg .navbar-collapse {
+  margin-left: 155px;
+}
+
 .navbar-brand {
   margin-right: 0px;
   padding-bottom: 0px;
@@ -103,6 +107,7 @@ nav {
 
 .mini-logo {
   width: 120px;
+  margin-left: 22px;
 }
 
 .main-container {
@@ -148,6 +153,8 @@ input {
 
 /* profile styling */
 
+/* map section and main container styling */
+
 .profile-container {
   color: black;
   margin-top: 20px;
@@ -164,7 +171,7 @@ input {
   height: 600px;
   align-items: center;
   justify-content: center;
-  margin: 0 6%;
+  margin: 0 5%;
   padding: 35px;
   width: 90%;
 }
@@ -231,7 +238,7 @@ input {
   padding: 15px;
   width: 100px;
   height: 25px;
-  font-size: .6em;
+  font-size: .7em;
   border-radius: 0px 3px 3px 0px;
 }
 
@@ -246,7 +253,7 @@ input {
   padding: 15px;
   width: 100px;
   height: 25px;
-  font-size: .6em;
+  font-size: .7em;
   border-radius: 3px 0px 0px 3px;
 }
 
@@ -261,7 +268,7 @@ input {
   padding: 15px;
   width: 100px;
   height: 25px;
-  font-size: .6em;
+  font-size: .7em;
   border-radius: 3px;
 }
 
@@ -294,14 +301,39 @@ p {
   justify-content: space-around;
 }
 
-.walk-score {
-  background-color: white;
-}
-
 .markets {
   overflow: scroll;
+  width: 130%;
 }
 
+/* Market and Fav side bar */
+.market-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+}
+
+.market-info div {
+  margin: 10px;
+}
+
+.market-image {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.market-image img {
+  max-width: 100;
+  max-height: 100;
+}
+
+.each hr {
+  border: 2px solid #214252;
+}
+
+/*footer styling */
 
 .social-media {
   margin: 20px;
