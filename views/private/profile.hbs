@@ -3,15 +3,15 @@
     <section class="profile-information dark-background">
           <article class="container profile-info map">
             <div class="map-search">
-              <button class="favorites-btn" type="submit" onclick="listAllFavorites()">Show Favorites</button>
+              <button class="favorites-btn" type="submit" onclick="listAllFavorites()">Favorites</button>
               <form action="/profile">
-              <button class="neighborhood-btn" type="submit">Show Neighborhood</button>
+              <button class="neighborhood-btn" type="submit">Neighborhood</button>
               </form>
               <label class="move-input">
                 <input type="text" name="customLocation" id="customLocation" placeholder="Enter location" required>
               </label>
               <button class="search-button" onclick="searchLocation()">Search</button>
-            <button class="location-btn" onclick="getCurrentLocation()">Current location</button>
+            <button class="location-btn" onclick="getCurrentLocation()">My Location</button>
             </div>
             <div id="map"></div>
           </article>
@@ -133,11 +133,14 @@
   let results = '';
   function listAllLocation(name, address, place_id, rating, lat, lng, image) {
           results+= `
+          <div class="each">
           <div class="market-info" id="market-info">
-              <div class="market-image"><img src="${image}" /></div>
+              <span class="market-image"><img src="${image}" /></span>
+              <div class="market-des">
               <div class="market-name">Market Name: ${name}</div>
               <div class="market-address">Address: ${address}</div>
               <div class="market-rating">Rating: ${rating}/5</div>
+              
               <form action='/favorites/create' method='POST'>
                 <input type='hidden' name='name' value='${name}' >
                 <input type='hidden' name='address' value='${address}' >
@@ -147,7 +150,9 @@
                 <input type='hidden' name='lng' value='${lng}' >
                 <button type='submit' class="submit btn-fav" >Add to Favorites</button>
               </form>
-              <hr>
+              </div>
+          </div>
+          <hr>
           </div>
           `
     document.getElementById('list-markets').innerHTML = results;
