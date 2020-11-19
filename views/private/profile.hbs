@@ -44,8 +44,8 @@
      // let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
       let request = {
         location: keyword,
-        query: ['market', 'bio']
-
+        query: ['market', 'bio'],
+        radius: '500'
       }
       let service = new google.maps.places.PlacesService(map);
       service.textSearch(request, (results, status) => {
@@ -318,8 +318,8 @@ function getFavorites() {
           let lng = results[0].geometry.location.lng();
           searchPlaces({ lat, lng});
           map.setCenter({ lat, lng});
-          setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
-          listAllNewLocation(name, address, place_id, rating, lat, lng);
+          //setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
+          //listAllNewLocation(name, address, place_id, rating, lat, lng);
         } 
       });
 
