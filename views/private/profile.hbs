@@ -69,15 +69,16 @@
   function setMarker(marker, name, address, place_id, rating, lat, lng) {
    let favoritesArray = JSON.parse(document.getElementById('favoritesArray').value);
      console.log('favoritesArray', favoritesArray)
-    
-    let text;
-    favoritesArray.forEach(favorite => {
-      if(favorite.id === place_id) {
+ 
+    let text = "Add to favorites"
+debugger;
+    for(let i = 0; i<favoritesArray.length;i++) {
+      if (favoritesArray[i].id === place_id) {
         text = 'Already a favorite'
-      } else {
-        text = 'Add to favorites'
+        break;
       }
-    })
+    }
+
     let customMarker = new google.maps.Marker({
       position: marker,
       map: map
@@ -213,24 +214,31 @@ function listAllFavorites(name, address, place_id, lat, lng) {
    .then(() => {
     console.log(dbResults);
 
-    let favoritesCoor = []
-    dbResults.forEach((favorites) => {
-      favoritesCoor.push({ lat: favorites.lat, lng: favorites.lng }) 
-
+    
+    clearMarkers();
+    dbResults.forEach((favorite) => {
+    if (favorite.lat) {
+       setMarker({ lat: favorite.lat, lng: favorite.lng },
+        favorite.name,
+        favorite.address,
+        favorite.id,
+        0,
+        favorite.lat,
+        favorite.lng);
+    }
+     
       myFavorites += `<div>
-                <h3>${favorites.name}</h3>
-                <h4>${favorites.address}</h4>
+                <h3>${favorite.name}</h3>
+                <h4>${favorite.address}</h4>
                 <!-- we can only have post requests on forms -->
-                <form action="/profile/${favorites._id}/delete" method="POST">
+                <form action="/profile/${favorite._id}/delete" method="POST">
                   <button type="submit">Delete</button>
                 </form>
               </div>`
+          
     })
 
-    clearMarkers();
-    showMarkers(favoritesCoor);
-
-   listDiv.innerHTML = myFavorites;
+    listDiv.innerHTML = myFavorites;
    })   
 }
 
@@ -251,11 +259,6 @@ function getFavorites() {
     })
 }
 
-  function showMarkers(favoritesCoor) {  //ARRAY
-    favoritesCoor.forEach((marker) => {
-      setMarker(marker);
-    })
-  }
 
   function clearMarkers() {
     firstMarkers.forEach((marker) => {
