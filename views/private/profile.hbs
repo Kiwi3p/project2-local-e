@@ -3,15 +3,15 @@
     <section class="profile-information dark-background">
           <article class="container profile-info map">
             <div class="map-search">
-              <button type="submit" onclick="listAllFavorites()">Show Favorites</button>
+              <button class="favorites-btn" type="submit" onclick="listAllFavorites()">Show Favorites</button>
               <form action="/profile">
-              <button type="submit">Show My Neighborhood</button>
+              <button class="neighborhood-btn" type="submit">Show Neighborhood</button>
               </form>
-              <label>
+              <label class="move-input">
                 <input type="text" name="customLocation" id="customLocation" placeholder="Enter location" required>
               </label>
-              <button onclick="searchLocation()">Search</button>
-            <button onclick="getCurrentLocation()">Get current location</button>
+              <button class="search-button" onclick="searchLocation()">Search</button>
+            <button class="location-btn" onclick="getCurrentLocation()">Current location</button>
             </div>
             <div id="map"></div>
           </article>
