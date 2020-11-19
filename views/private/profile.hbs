@@ -16,7 +16,7 @@
             <div id="map"></div>
           </article>
           <article class="container profile-info markets">
-            <h3>Farmers Markets</h3>
+            <h3 style="{ position: relative; }" class="fav-list-header" id="fav-list-header">Farmers Markets</h3>
             <div style="{ overflow: scroll; display: block; }" id="list-markets"></div>
           </article>
     </section>
@@ -44,7 +44,8 @@
      // let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
       let request = {
         location: keyword,
-        query: ['market', 'bio']
+        query: ['market', 'bio'],
+        fields: ['photos'],
 
       }
       let service = new google.maps.places.PlacesService(map);
@@ -52,6 +53,18 @@
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (let i = 0; i < results.length; i++) {
             let data = results;
+            let photoArray = results[0].photos[0];
+            console.log(data[0].photos[0]);
+            let image = (results[i].photos !== undefined) ?
+                        (results[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})) :
+                        '/images/losticon.png';
+                      //results[i].photos[i].getUrl({'maxWidth': 100, 'maxHeight': 100});
+                      /*if (results[i].photos !== 'undefined'){
+                        return ''
+                      } else {
+                        results[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
+                        };*/
+            console.log(image);
             let name = results[i].name;
             let address = results[i].formatted_address;
             let place_id = results[i].place_id;
@@ -60,7 +73,7 @@
            let lng = results[i].geometry.location.lng();
             setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
             clearDivs();
-            listAllLocation(name, address, place_id, rating, lat, lng);
+            listAllLocation(name, address, place_id, rating, lat, lng, image);
           }
           
         }
@@ -72,7 +85,6 @@
      console.log('favoritesArray', favoritesArray)
  
     let text = "Add to favorites"
-debugger;
     for(let i = 0; i<favoritesArray.length;i++) {
       if (favoritesArray[i].id === place_id) {
         text = 'Already a favorite'
@@ -113,9 +125,10 @@ debugger;
 
   // SHOW SEARCH LIST 
   let results = '';
-  function listAllLocation(name, address, place_id, rating, lat, lng) {
+  function listAllLocation(name, address, place_id, rating, lat, lng, image) {
           results+= `
           <div class="market-info" id="market-info">
+              <div class="market-image"><img src="${image}" /></div>
               <div class="market-name">Market Name: ${name}</div>
               <div class="market-address">Address: ${address}</div>
               <div class="market-rating">Rating: ${rating}/5</div>
@@ -188,7 +201,7 @@ function initialize() {
         let request = {
           origin: start,
           destination: end,
-          travelMode: 'TRANSIT'
+          travelMode: 'WALKING'
         };
 
         directionsService.route(request, (result, status) => {
@@ -216,6 +229,7 @@ function listAllFavorites(name, address, place_id, lat, lng) {
    
    let listDiv = document.getElementById('list-markets');
    listDiv.innerHTML = '';
+   document.getElementById('fav-list-header').innerHTML = 'My Favorites';
    getFavorites()
    .then(() => {
     console.log(dbResults);
