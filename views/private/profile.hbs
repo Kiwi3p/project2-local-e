@@ -181,7 +181,7 @@ function initialize() {
         let request = {
           origin: start,
           destination: end,
-          travelMode: 'DRIVING'
+          travelMode: 'TRANSIT'
         };
 
         directionsService.route(request, (result, status) => {
