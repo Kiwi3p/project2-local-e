@@ -11,6 +11,7 @@ body {
 
 .intro-container {
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .main-logo {
@@ -37,7 +38,7 @@ body {
   color: black;
   font-size: 25px;
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 
 a {
@@ -69,6 +70,7 @@ a:hover {
   max-width: 1000px;
   align-items: center;
   border: 3px solid #253131;
+  margin: auto;
 }
 
 .navbar {
@@ -249,4 +251,33 @@ footer {
   align-items: right;
   padding: 0px;
   color: #214252;
+}
+
+.section3 {
+max-width: 1000px;
+text-align: center;
+ margin: 50px auto;
+}
+
+#slide3 {
+  max-width: 1000px;
+  background-color: rgba(232, 217, 217, .3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 50px auto;
+}
+
+#slide3>.flex-work {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 80%;
+  margin: 10px;
+}
+.each {
+  margin: 15px;
+  text-align: center;
 }
