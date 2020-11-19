@@ -231,7 +231,7 @@ input {
   padding: 15px;
   width: 100px;
   height: 25px;
-  font-size: .4em;
+  font-size: .6em;
   border-radius: 0px 3px 3px 0px;
 }
 
@@ -246,7 +246,7 @@ input {
   padding: 15px;
   width: 100px;
   height: 25px;
-  font-size: .4em;
+  font-size: .6em;
   border-radius: 3px 0px 0px 3px;
 }
 
@@ -261,7 +261,7 @@ input {
   padding: 15px;
   width: 100px;
   height: 25px;
-  font-size: .4em;
+  font-size: .6em;
   border-radius: 3px;
 }
 
