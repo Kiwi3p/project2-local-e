@@ -253,6 +253,19 @@ footer {
   color: #214252;
 }
 
+
+
+.section3 h3 {
+  background-color: #CEE1F4;
+  transform: skew(9deg, 0deg);
+  font-style: italic;
+  text-align: center;
+  margin: 5%;
+  padding: 10px .05px;
+
+}
+
+
 .section3 {
 max-width: 1000px;
 text-align: center;
@@ -261,7 +274,7 @@ text-align: center;
 
 #slide3 {
   max-width: 1000px;
-  background-color: rgba(232, 217, 217, .3);
+   /* background-color: rgba(232, 217, 217, .3); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -274,10 +287,23 @@ text-align: center;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  width: 80%;
-  margin: 10px;
+
+  margin: 0px;
 }
 .each {
   margin: 15px;
   text-align: center;
 }
+.icon {
+  width: 50px;
+  /* margin-bottom: 10px; */
+  margin-top: 5px;
+}
+ .healthy {
+  margin-top: -16px
+} 
+.large-icon {
+  width: 65px;
+}
+
+
