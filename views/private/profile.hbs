@@ -64,18 +64,20 @@
           }
           
         }
+
       });
-    }
+
+     }
+
+
 
   function setMarker(marker, name, address, place_id, rating, lat, lng) {
    let favoritesArray = JSON.parse(document.getElementById('favoritesArray').value);
-     console.log('favoritesArray', favoritesArray)
  
-    let text = "Add to favorites"
-debugger;
+    let text = `<button type='submit' class="submit btn-fav">Add to favorites</button>`
     for(let i = 0; i<favoritesArray.length;i++) {
       if (favoritesArray[i].id === place_id) {
-        text = 'Already a favorite'
+        text = `<span style="margin: 0px 25%;">Already a favorite! <img style="width:20px;" src="images/favicon.ico"></span>`
         break;
       }
     }
@@ -97,9 +99,7 @@ debugger;
       <input type='hidden' name='rating' value='${rating}' >
       <input type='hidden' name='lat' value='${lat}' >
       <input type='hidden' name='lng' value='${lng}' >
-      <button type='submit' class="submit btn-fav" >${text}</button>
-    </form>
-    <button type='submit' class="submit btn-fav" onclick="calcRoute(${lat}, ${lng})">Get there</button>
+      ${text}</form><button type='submit' class="submit btn-fav" onclick="calcRoute(${lat}, ${lng})">Get there</button>
       `;
     
     const infowindow = new google.maps.InfoWindow({
