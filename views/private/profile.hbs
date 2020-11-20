@@ -30,8 +30,8 @@
 
 <script>
 
-
 //ONLOAD 
+let markets;
   let map;
   //onload markers Array
   let firstMarkers = [];
@@ -63,6 +63,8 @@
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (let i = 0; i < results.length; i++) {
             let data = results;
+            markets = results;
+            console.log(results)
             let photoArray = results[0].photos[0];
             let image = (results[i].photos !== undefined) ?
                         (results[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})) :
@@ -118,10 +120,31 @@
     });
     
     customMarker.addListener("click", () => {
+      //console.log(markerAttributes)
       infowindow.open(map, customMarker);
-      //highlightDetails();
+      highlightOnList(place_id);
     });
   }
+
+
+function highlightOnList(place_id) {
+  //console.log(place_id)
+  //console.log(`markets`, markets);
+
+  for (let i = 0; i < markets.length; i++) {
+        if (markets[i].place_id === place_id) {
+     document.getElementById(place_id).parentNode.parentNode.style.background = '#F2F2F2';
+
+        } else {
+//slide // shift 
+        }
+      }
+
+
+}
+
+
+
 
   // SHOW SEARCH LIST 
   let results = '';
@@ -218,8 +241,8 @@
   let directionsRenderer;
 
 function initialize() {
-    let directionsService = new google.maps.DirectionsService();
-    let directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
 } */
  
   function calcRoute(lat, lng) {

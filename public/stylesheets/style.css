@@ -69,7 +69,7 @@ a:hover {
 }
 
 .main-img {
-  max-width: 1000px;
+  max-width: 100%;
   align-items: center;
   border: 3px solid #253131;
   margin: auto;
@@ -251,24 +251,10 @@ input {
   padding: 15px;
   width: 100px;
   height: 25px;
-  font-size: .7em;
+  font-size: .8em;
   border-radius: 0px 3px 3px 0px;
 }
 
-.favorites-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #6197B9;
-  color: white;
-  border: 0px;
-  padding: 15px;
-  width: 100px;
-  height: 25px;
-  font-size: .7em;
-  border-radius: 3px 0px 0px 3px;
-}
 
 .location-btn {
   display: flex;
@@ -281,7 +267,7 @@ input {
   padding: 15px;
   width: 120px;
   height: 25px;
-  font-size: .7em;
+  font-size: .8em;
   border-radius: 3px;
 }
 
@@ -492,26 +478,7 @@ text-align: center;
   width: 130%;
 }
 
-.scroll-fixed {
-  margin: -20px 0px 0px 0px;
-  background-color: white;
-  width: 200px;
-}
-
-.fav-list-header {
-  margin: 0px 0px 17px 0px;
-  position: absolute;
-  background-color: white;
-  width: 25%;
-  height: 7%;
-  padding: 11px 0px 0px 0px;
-}
-
-#list-markets {
-  margin-top: 55px;
-}
-
-
+/* Market and Fav side bar */
 .market-info {
   display: flex;
   flex-direction: row;
