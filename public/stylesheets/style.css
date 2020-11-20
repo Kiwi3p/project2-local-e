@@ -120,14 +120,13 @@ nav {
 
 .login-container {
   color: white;
-  background-color: black;
+  background-color: #3AB0EA;
   padding: 20px 50px;
   text-align: center;
 }
 
 .mini-title {
   color: white;
-  background-color: black;
 }
 
 /* MAIN */
@@ -145,7 +144,7 @@ input {
   padding: 5px 30px;
   border-radius: 3px;
   border: none;
-  color: black;
+  color: #3AB0EA;
   font-size: 18px;
   margin: 0 auto;
   display: block;
@@ -154,6 +153,15 @@ input {
 
 .login-div {
   padding-top: 5%;
+}
+
+.vertical-line {
+  border-left: 6px solid rgb(255, 255, 255);
+  height: 350px;
+  position: absolute;
+  left: 50%;
+  margin-top: 160px;
+  top: 0;
 }
 
 /* profile styling */
@@ -271,7 +279,7 @@ input {
   color: white;
   border: 0px;
   padding: 15px;
-  width: 100px;
+  width: 120px;
   height: 25px;
   font-size: .7em;
   border-radius: 3px;
@@ -317,6 +325,7 @@ p {
   flex-direction: row;
   align-items: center;
   text-align: left;
+  font-size: .8em;
 }
 
 .market-info div {
@@ -324,18 +333,30 @@ p {
 }
 
 .market-image {
-  width: 100px;
-  height: 100px;
+  width: 200px;
   margin-right: 20px;
+  object-fit: cover;
+  object-position: 20px 10px;
+  flex-grow:1;
 }
 
 .market-image img {
-  max-width: 100;
-  max-height: 100;
+  
+  flex-grow:1;
+  width: 100%;
+  margin: 20px 20px;
+  object-fit: cover;
+  
+  border: 2px solid #C1D4E9;
+  box-shadow: -10px -10px #C1D4E9;
 }
 
 .each hr {
   border: 2px solid #214252;
+}
+
+.align-favs {
+  text-align: left;
 }
 
 /*footer styling */
@@ -390,6 +411,7 @@ footer {
   text-align: center;
   margin: 5%;
   padding: 10px .05px;
+  color: white;
 }
 
 .section3 {
@@ -454,10 +476,7 @@ text-align: center;
 .news-title {
   text-align: center;
 }
-.shopping {
-  
-}
-padding: 25px
+
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
 
 body {
