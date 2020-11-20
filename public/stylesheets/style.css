@@ -439,7 +439,6 @@ text-align: center;
 }
 
 
-
 .blog {
   color: grey;
   font-size: 15px;
@@ -690,7 +689,6 @@ input {
   margin-right: 30px;
 }
 
-
 .favorites-btn {
   display: flex;
   justify-content: center;
@@ -734,12 +732,33 @@ p {
   justify-content: space-around;
 }
 
+/* Market and Fav side bar */
+
 .markets {
   overflow: scroll;
   width: 130%;
 }
 
-/* Market and Fav side bar */
+.scroll-fixed {
+  margin: -20px 0px 0px 0px;
+  background-color: white;
+  width: 200px;
+}
+
+.fav-list-header {
+  margin: 0px 0px 17px 0px;
+  position: absolute;
+  background-color: white;
+  width: 25%;
+  height: 7%;
+  padding: 11px 0px 0px 0px;
+}
+
+#list-markets {
+  margin-top: 55px;
+}
+
+
 .market-info {
   display: flex;
   flex-direction: row;
@@ -764,6 +783,12 @@ p {
 
 .each hr {
   border: 2px solid #214252;
+}
+
+.fav-switch {
+  background-color: #f3f3f3;
+  color: #CEE1F4;
+  width: 200px;
 }
 
 /*footer styling */
