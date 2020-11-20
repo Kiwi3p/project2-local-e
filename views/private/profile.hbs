@@ -117,9 +117,29 @@
     
     customMarker.addListener("click", () => {
       infowindow.open(map, customMarker);
-      //highlightDetails();
+      //highlightOnList();
     });
   }
+
+
+function highlightOnList() {
+
+  let markets = firstMarkers;
+console.log(markets);
+  for (let i = 0; i < markets.length; i++) {
+        if (markets[i].place_id === results.place_id) {
+          
+    // document.getElementById('place_id');
+    results.place_id.parentNode.style.background = grey;
+          break;
+        }
+      }
+
+
+}
+
+
+
 
   // SHOW SEARCH LIST 
   let results = '';
