@@ -619,6 +619,7 @@ p {
   margin: -20px 0px 0px 0px;
   background-color: white;
   width: 200px;
+  height: 20px;
 }
 
 .fav-list-header {
