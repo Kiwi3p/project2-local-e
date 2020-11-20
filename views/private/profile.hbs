@@ -139,11 +139,7 @@ function highlightOnList(place_id) {
 //slide // shift 
         }
       }
-
-
 }
-
-
 
 
   // SHOW SEARCH LIST 
@@ -236,19 +232,21 @@ function highlightOnList(place_id) {
   
 //CALC ROUTE
 
-/*Get directions activates getdirection();
+//Get directions activates getdirection();
   let directionsService;
   let directionsRenderer;
 
 function initialize() {
-    directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer();
-} */
+  //  directionsService = new google.maps.DirectionsService();
+   // directionsRenderer = new google.maps.DirectionsRenderer();
+} 
  
   function calcRoute(lat, lng) {
-    //initialize();
-    let directionsService = new google.maps.DirectionsService();
-    let directionsRenderer = new google.maps.DirectionsRenderer();
+ //   initialize();
+    clearRoute(); 
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
+ 
     getCurrentLocation(lat, lng) ;
 
     function getCurrentLocation(lat, lng) {
@@ -275,10 +273,13 @@ function initialize() {
     }
   }
 
-       /* function clearRoute() {
-          // Clear past routes
-        directionsRenderer.setMap(null)
-        } */
+function clearRoute() {
+   // Clear past routes
+   if (directionsRenderer) {
+     directionsRenderer.setMap(null)
+     directionsRenderer = null;
+   }
+} 
 
 
 //FAVS FROM BACKEND // ALT WAY WITH AXIOS
@@ -286,8 +287,7 @@ let dbResults
 let myFavorites = '';
 function listAllFavorites() {
    //console.log(directionsRenderer);
-   //if (!directionsRenderer) {
-   //clearRoute(); }
+   clearRoute(); 
    
    let listDiv = document.getElementById('list-markets');
    listDiv.innerHTML = '';

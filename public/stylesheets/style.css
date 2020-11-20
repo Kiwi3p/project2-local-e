@@ -462,7 +462,6 @@ text-align: center;
 }
 
 
-
 .blog {
   color: grey;
   font-size: 15px;
@@ -494,6 +493,121 @@ text-align: center;
 
 /* map section and main container styling */
 
+.profile-container {
+  color: black;
+  margin-top: 10px;
+}
+
+.profile-container h1 {
+  margin-left: 6.5%;
+  padding: 0 0 15px 0;
+}
+
+.profile-information {
+  display: flex;
+  flex-direction: row;
+  height: 600px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5%;
+  padding: 35px;
+  width: 90%;
+}
+
+.dark-background {
+  background-color: #3AB0EA;
+}
+
+.btn-fav {
+  border: none;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 3px;
+  margin: auto;
+  color: #39AFEA;
+  padding: 5px 30px;
+  margin-top: 5px;
+}
+
+.profile-info {
+  background-color: white;
+  height: 500px;
+  margin: 0px 20px;
+  padding: 20px;
+  box-shadow: -10px -10px #C1D4E9;
+}
+
+.profile-info input {
+  width: 100%;
+  height: 30px;
+  background-color: rgba(0,0,0,.05);
+  border: 0px;
+  margin:  4% ;
+  border-radius: 3px 0px 0px 3px;
+}
+
+.move-input {
+  margin: 0px 0px 0 20px; 
+}
+
+.search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #6197B9;
+  color: white;
+  border: 0px;
+  padding: 15px;
+  width: 100px;
+  height: 25px;
+  border-radius: 0px 3px 3px 0px;
+  margin-right: 30px;
+}
+
+.favorites-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #6197B9;
+  color: white;
+  border: 0px;
+  padding: 15px;
+  width: 100px;
+  height: 25px;
+  font-size: .8em;
+  border-radius: 3px 0px 0px 3px;
+}
+
+.profile-info p,
+h3,
+p {
+  color: black;
+}
+
+.profile-header {
+  margin-left: 22px;
+}
+
+.map {
+  width: 2500px;
+}
+
+#map {
+  height: 380px;
+  width: 100%;
+  margin-top: 22px;
+  margin-bottom: 14px;
+}
+
+.map-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
 /* Market and Fav side bar */
 
 .markets {
@@ -501,7 +615,26 @@ text-align: center;
   width: 130%;
 }
 
-/* Market and Fav side bar */
+.scroll-fixed {
+  margin: -20px 0px 0px 0px;
+  background-color: white;
+  width: 200px;
+}
+
+.fav-list-header {
+  margin: 0px 0px 17px 0px;
+  position: absolute;
+  background-color: white;
+  width: 25%;
+  height: 7%;
+  padding: 11px 0px 0px 0px;
+}
+
+#list-markets {
+  margin-top: 55px;
+}
+
+
 .market-info {
   display: flex;
   flex-direction: row;
