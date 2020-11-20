@@ -411,6 +411,7 @@ footer {
   text-align: center;
   margin: 5%;
   padding: 10px .05px;
+  color: white;
 }
 
 .section3 {
@@ -475,10 +476,7 @@ text-align: center;
 .news-title {
   text-align: center;
 }
-.shopping {
-  
-}
-padding: 25px
+
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
 
 body {
