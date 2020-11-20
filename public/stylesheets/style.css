@@ -69,7 +69,7 @@ a:hover {
 }
 
 .main-img {
-  max-width: 1000px;
+  max-width: 100%;
   align-items: center;
   border: 3px solid #253131;
   margin: auto;
@@ -251,24 +251,10 @@ input {
   padding: 15px;
   width: 100px;
   height: 25px;
-  font-size: .7em;
+  font-size: .8em;
   border-radius: 0px 3px 3px 0px;
 }
 
-.favorites-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #6197B9;
-  color: white;
-  border: 0px;
-  padding: 15px;
-  width: 100px;
-  height: 25px;
-  font-size: .7em;
-  border-radius: 3px 0px 0px 3px;
-}
 
 .location-btn {
   display: flex;
@@ -281,7 +267,7 @@ input {
   padding: 15px;
   width: 120px;
   height: 25px;
-  font-size: .7em;
+  font-size: .8em;
   border-radius: 3px;
 }
 
@@ -547,13 +533,6 @@ a:hover {
   text-decoration: none;
 }
 
-.main-img {
-  max-width: 1000px;
-  align-items: center;
-  border: 3px solid #253131;
-  margin: auto;
-}
-
 /* NAV BAR */
 .navbar {
   padding: 0px;
@@ -711,20 +690,6 @@ input {
   margin-right: 30px;
 }
 
-.neighborhood-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #3B8E83;
-  color: white;
-  border: 0px;
-  padding: 15px;
-  width: 100px;
-  height: 25px;
-  font-size: .7em;
-  border-radius: 0px 3px 3px 0px;
-}
 
 .favorites-btn {
   display: flex;
@@ -737,25 +702,9 @@ input {
   padding: 15px;
   width: 100px;
   height: 25px;
-  font-size: .7em;
+  font-size: .8em;
   border-radius: 3px 0px 0px 3px;
 }
-
-.location-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color:#6197B9;
-  color: white;
-  border: 0px;
-  padding: 15px;
-  width: 100px;
-  height: 25px;
-  font-size: .7em;
-  border-radius: 3px;
-}
-
 
 .profile-info p,
 h3,

@@ -28,8 +28,8 @@
 
 <script>
 
-
 //ONLOAD 
+let markets;
   let map;
   //onload markers Array
   let firstMarkers = [];
@@ -61,6 +61,8 @@
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (let i = 0; i < results.length; i++) {
             let data = results;
+            markets = results;
+            console.log(results)
             let photoArray = results[0].photos[0];
             let image = (results[i].photos !== undefined) ?
                         (results[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})) :
@@ -116,22 +118,23 @@
     });
     
     customMarker.addListener("click", () => {
+      //console.log(markerAttributes)
       infowindow.open(map, customMarker);
-      //highlightOnList();
+      highlightOnList(place_id);
     });
   }
 
 
-function highlightOnList() {
+function highlightOnList(place_id) {
+  //console.log(place_id)
+  //console.log(`markets`, markets);
 
-  let markets = firstMarkers;
-console.log(markets);
   for (let i = 0; i < markets.length; i++) {
-        if (markets[i].place_id === results.place_id) {
-          
-    // document.getElementById('place_id');
-    results.place_id.parentNode.style.background = grey;
-          break;
+        if (markets[i].place_id === place_id) {
+     document.getElementById(place_id).parentNode.parentNode.style.background = '#F2F2F2';
+
+        } else {
+//slide // shift 
         }
       }
 
@@ -179,7 +182,7 @@ console.log(markets);
           <div class="market-info" id="market-info">
               <span class="market-image"><img src="${image}" /></span>
               <div class="market-des">
-              <div class="market-name">Market Name: ${name}</div>
+              <div class="market-name">Name: ${name}</div>
               <div class="market-address">Address: ${address}</div>
               <div class="market-rating">Rating: ${rating}/5</div>
               
@@ -216,8 +219,8 @@ console.log(markets);
   let directionsRenderer;
 
 function initialize() {
-    let directionsService = new google.maps.DirectionsService();
-    let directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
 } */
  
   function calcRoute(lat, lng) {
