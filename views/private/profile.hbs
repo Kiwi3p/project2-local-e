@@ -16,7 +16,9 @@
             <div id="map"></div>
           </article>
           <article class="container profile-info markets">
-            <h3 style="{ position: relative; }" class="fav-list-header" id="fav-list-header">Farmers Markets</h3>
+            <div class="scroll-fixed">
+            <h3 class="fav-list-header" id="fav-list-header">Farmers Markets</h3>
+            </div>
             <div style="{ overflow: scroll; display: block; }" id="list-markets"></div>
           </article>
     </section>
@@ -147,6 +149,16 @@ function highlightOnList(place_id) {
   // SHOW SEARCH LIST 
   let results = '';
   function listAllLocation(name, address, place_id, rating, lat, lng, image) {
+          let favoritesArray = JSON.parse(document.getElementById('favoritesArray').value);
+ 
+          let text = `<button type='submit' class="submit btn-fav">Add to favorites</button>`
+          //filter if favorite
+          for(let i = 0; i<favoritesArray.length;i++) {
+            if (favoritesArray[i].id === place_id) {
+              text = `<div class="fav-switch" style="margin: 0px 25%;">Already a favorite! <img style="width:20px;" src="images/favicon.ico"></div>`
+              break;
+            }
+          }
           results+= `
           <div class="each">
           <div class="market-info" id="market-info">
@@ -167,7 +179,7 @@ function highlightOnList(place_id) {
                 <input type='hidden' name='rating' value='${rating}' >
                 <input type='hidden' name='lat' value='${lat}' >
                 <input type='hidden' name='lng' value='${lng}' >
-                <button type='submit' class="submit btn-fav" >Add to Favorites</button>
+                ${text}
               </form>
           <hr>
           </div>
@@ -177,12 +189,22 @@ function highlightOnList(place_id) {
 
   let resultRefresh = '';
   function listAllNewLocation(name, address, place_id, rating, lat, lng, image) {
-          resultRefresh+= `
+          let favoritesArray = JSON.parse(document.getElementById('favoritesArray').value);
+ 
+          let text = `<button type='submit' class="submit btn-fav">Add to favorites</button>`
+          //filter if favorite
+          for(let i = 0; i<favoritesArray.length;i++) {
+            if (favoritesArray[i].id === place_id) {
+              text = `<span class="fav-switch" style="margin: 0px 25%;">Already a favorite! <img style="width:20px;" src="images/favicon.ico"></span>`
+              break;
+            }
+          }
+          results+= `
           <div class="each">
           <div class="market-info" id="market-info">
               <span class="market-image"><img src="${image}" /></span>
               <div class="market-des">
-              <div class="market-name">Name: ${name}</div>
+              <div id='${place_id}' class="market-name">Market: ${name}</div>
               <div class="market-address">Address: ${address}</div>
               <div class="market-rating">Rating: ${rating}/5</div>
               
@@ -197,7 +219,7 @@ function highlightOnList(place_id) {
                 <input type='hidden' name='rating' value='${rating}' >
                 <input type='hidden' name='lat' value='${lat}' >
                 <input type='hidden' name='lng' value='${lng}' >
-                <button type='submit' class="submit btn-fav" >Add to Favorites</button>
+                ${text}
               </form>
           <hr>
           </div>
