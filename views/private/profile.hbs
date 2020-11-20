@@ -90,7 +90,7 @@ let markets;
     //filter if favorite
     for(let i = 0; i<favoritesArray.length;i++) {
       if (favoritesArray[i].id === place_id) {
-        text = `<span style="margin: 0px 25%;">Already a favorite! <img style="width:20px;" src="images/favicon.ico"></span>`
+        text = `<span style="margin: 0px 25%;">Already a favorite! <img style="width:20px;" src="images/favicon.png"></span>`
         break;
       }
     }
@@ -151,7 +151,7 @@ function highlightOnList(place_id) {
           //filter if favorite
           for(let i = 0; i<favoritesArray.length;i++) {
             if (favoritesArray[i].id === place_id) {
-              text = `<div class="fav-switch" style="margin: 0px 25%;">Already a favorite! <img style="width:20px;" src="images/favicon.ico"></div>`
+              text = `<div class="fav-switch" style="margin: 0px 17%;">Already a favorite! <img style="width:15px;" src="images/favicon.png"></div>`
               break;
             }
           }
@@ -191,7 +191,7 @@ function highlightOnList(place_id) {
           //filter if favorite
           for(let i = 0; i<favoritesArray.length;i++) {
             if (favoritesArray[i].id === place_id) {
-              text = `<span class="fav-switch" style="margin: 0px 25%;">Already a favorite! <img style="width:20px;" src="images/favicon.ico"></span>`
+              text = `<div class="fav-switch" style="margin: 0px 17%;">Already a favorite! <img style="width:15px;" src="images/favicon.png"></div>`
               break;
             }
           }

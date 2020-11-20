@@ -168,6 +168,15 @@ input {
 
 /* map section and main container styling */
 
+.fav-list-header {
+  margin: 0px 0px 17px 0px;
+  position: absolute;
+  background-color: white;
+  width: 25%;
+  height: 7%;
+  padding: 11px 0px 0px 0px;
+}
+
 .profile-container {
   color: black;
   margin-top: 10px;
@@ -271,6 +280,20 @@ input {
   border-radius: 3px;
 }
 
+.favorites-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #6197B9;
+  color: white;
+  border: 0px;
+  padding: 15px;
+  width: 100px;
+  height: 25px;
+  font-size: .8em;
+  border-radius: 3px 0px 0px 3px;
+}
 
 .profile-info p,
 h3,
@@ -462,155 +485,8 @@ text-align: center;
   text-align: center;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
-
-body {
-  font-family: 'Work Sans', sans-serif;
-}
-
-.container {
-  background-color: white;
-  color: black;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-.intro-container {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.main-logo {
-  display: flex;
- margin: auto;
-
-}
-
 .title {
   font-size: 45px;
-}
-
-.subtitle {
-  color: black;
-  font-size: 20px;
-  text-align: center;
-}
-
-.intro-line {
-  border: 2px solid #39AFEA;
-}
-
-.intro-desc {
-  color: black;
-  font-size: 25px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-a {
-  color: black;
-  padding: 30px;
-  font-size: 18px;
-}
-
-a:hover {
-  color: #39AFEA;
-  text-decoration: none;
-}
-
-.btn-enter {
-  padding: 5px 30px;
-  border-radius: 3px;
-  border: none;
-  color: #39AFEA;
-  font-size: 18px;
-  margin: 0 auto;
-  display: block;
-}
-
-.btn-enter:hover {
-  text-decoration: none;
-}
-
-/* NAV BAR */
-.navbar {
-  padding: 0px;
-}
-
-.navbar-expand-lg .navbar-collapse {
-  margin-left: 155px;
-}
-
-.navbar-brand {
-  margin-right: 0px;
-  padding-bottom: 0px;
-  padding-top: 0px;
-}
-
-nav {
-  margin: 0px;
-}
-.navbar-nav {
-  display: flex;
-  align-items: center;
-  padding-left: 0px;
-  margin-left: 70%;
-}
-
-.nav-link {
-  margin: 5px;
-  padding-top: 13px;
-}
-
-
-.mini-logo {
-  width: 120px;
-  margin-left: 22px;
-}
-
-/* LOGIN */
-
-.main-container {
-  padding: 50px 150px;
-  display: flex;
-}
-
-.login-container {
-  color: white;
-  background-color: black;
-  padding: 20px 50px;
-  text-align: center;
-}
-
-.mini-title {
-  color: white;
-  background-color: black;
-}
-
-/* MAIN */
-
-input {
-  padding: 8px;
-  padding-left: 10px;
-  border-radius: 3px;
-  border: 1px rgba(246, 248, 250);
-  text-align: center;
-  color: black
-}
-
-.btn-login {
-  padding: 5px 30px;
-  border-radius: 3px;
-  border: none;
-  color: black;
-  font-size: 18px;
-  margin: 0 auto;
-  display: block;
-  width: 150px;
-}
-
-.login-div {
-  padding-top: 5%;
 }
 
 /* profile styling */
@@ -787,10 +663,13 @@ p {
 }
 
 .fav-switch {
-  background-color: #f3f3f3;
-  color: #CEE1F4;
+  background-color: #f6fbff;
+  color: #39AFEA;
   width: 200px;
+  border-radius: 3px;
+  height: 20px;
 }
+
 
 /*footer styling */
 
