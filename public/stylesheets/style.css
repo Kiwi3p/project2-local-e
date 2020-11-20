@@ -168,6 +168,15 @@ input {
 
 /* map section and main container styling */
 
+.fav-list-header {
+  margin: 0px 0px 17px 0px;
+  position: absolute;
+  background-color: white;
+  width: 25%;
+  height: 7%;
+  padding: 11px 0px 0px 0px;
+}
+
 .profile-container {
   color: black;
   margin-top: 10px;
@@ -271,6 +280,20 @@ input {
   border-radius: 3px;
 }
 
+.favorites-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #6197B9;
+  color: white;
+  border: 0px;
+  padding: 15px;
+  width: 100px;
+  height: 25px;
+  font-size: .8em;
+  border-radius: 3px 0px 0px 3px;
+}
 
 .profile-info p,
 h3,
