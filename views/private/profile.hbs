@@ -21,13 +21,17 @@
           </article>
     </section>
 </div>
+{{!--Object from Back End --}}
 <input type="hidden" id="storeLocationInput" value={{thisLocation}}>
+{{!-- Array from BAck End  ""--}}
 <input type="hidden" id="favoritesArray" value="{{favorites}}">
 
 <script>
 
+
 //ONLOAD 
   let map;
+  //onload markers Array
   let firstMarkers = [];
   //get params on URL from BAKEND call
   const urlParams = new URLSearchParams(window.location.search);
@@ -47,13 +51,10 @@
   } 
 
   function searchPlaces(keyword) {
- 
-     // let savedLocation = JSON.parse(document.getElementById('storeLocationInput').value);
       let request = {
         location: keyword,
         query: ['market', 'bio'],
         fields: ['photos'],
-
       }
       let service = new google.maps.places.PlacesService(map);
       service.textSearch(request, (results, status) => {
@@ -64,12 +65,6 @@
             let image = (results[i].photos !== undefined) ?
                         (results[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})) :
                         '/images/losticon.png';
-                      //results[i].photos[i].getUrl({'maxWidth': 100, 'maxHeight': 100});
-                      /*if (results[i].photos !== 'undefined'){
-                        return ''
-                      } else {
-                        results[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
-                        };*/
             let name = results[i].name;
             let address = results[i].formatted_address;
             let place_id = results[i].place_id;
@@ -79,20 +74,16 @@
             setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
             clearDivs();
             listAllLocation(name, address, place_id, rating, lat, lng, image);
-          }
-          
+          }         
         }
-
       });
-
      }
-
-
 
   function setMarker(marker, name, address, place_id, rating, lat, lng) {
    let favoritesArray = JSON.parse(document.getElementById('favoritesArray').value);
  
     let text = `<button type='submit' class="submit btn-fav">Add to favorites</button>`
+    //filter if favorite
     for(let i = 0; i<favoritesArray.length;i++) {
       if (favoritesArray[i].id === place_id) {
         text = `<span style="margin: 0px 25%;">Already a favorite! <img style="width:20px;" src="images/favicon.ico"></span>`
@@ -100,13 +91,14 @@
       }
     }
 
+    //Markers
     let customMarker = new google.maps.Marker({
       position: marker,
       map: map
     });
-
     firstMarkers.push(customMarker);
     
+    //pop up window
     let markerAttributes =`${name}<br/> 
     ${address}<br/>
     Rating: ${rating}/5
@@ -119,13 +111,13 @@
       <input type='hidden' name='lng' value='${lng}' >
       ${text}</form><button type='submit' class="submit btn-fav" onclick="calcRoute(${lat}, ${lng})">Get there</button>
       `;
-    
     const infowindow = new google.maps.InfoWindow({
       content: markerAttributes,
     });
     
     customMarker.addListener("click", () => {
       infowindow.open(map, customMarker);
+      //highlightDetails();
     });
   }
 
@@ -137,7 +129,7 @@
           <div class="market-info" id="market-info">
               <span class="market-image"><img src="${image}" /></span>
               <div class="market-des">
-              <div class="market-name">Market Name: ${name}</div>
+              <div id='${place_id}' class="market-name">Market: ${name}</div>
               <div class="market-address">Address: ${address}</div>
               <div class="market-rating">Rating: ${rating}/5</div>
               
@@ -189,11 +181,15 @@
           `
     document.getElementById('list-markets').innerHTML = resultRefresh;
   }
+
   let divClear;
   function clearDivs() {
     divClear = ``;
     document.getElementById('list-markets').innerHTML = divClear;
   }
+
+  
+//CALC ROUTE
 
 /*Get directions activates getdirection();
   let directionsService;
@@ -239,7 +235,8 @@ function initialize() {
         directionsRenderer.setMap(null)
         } */
 
-  //FAVS
+
+//FAVS FROM BACKEND // ALT WAY WITH AXIOS
 let dbResults
 let myFavorites = '';
 function listAllFavorites() {
@@ -250,21 +247,21 @@ function listAllFavorites() {
    let listDiv = document.getElementById('list-markets');
    listDiv.innerHTML = '';
    document.getElementById('fav-list-header').innerHTML = 'My Favorites';
+   
    getFavorites()
    .then(() => {
 
-    
     clearMarkers();
     dbResults.forEach((favorite) => {
-    if (favorite.lat) {
-       setMarker({ lat: favorite.lat, lng: favorite.lng },
-        favorite.name,
-        favorite.address,
-        favorite.id,
-        0,
-        favorite.lat,
-        favorite.lng);
-    }
+      if (favorite.lat) {
+        setMarker({ lat: favorite.lat, lng: favorite.lng },
+          favorite.name,
+          favorite.address,
+          favorite.id,
+          0,
+          favorite.lat,
+          favorite.lng);
+      }
      
       myFavorites += `
                 <div class="each">
@@ -283,7 +280,7 @@ function listAllFavorites() {
     })
 
     listDiv.innerHTML = myFavorites;
-   })   
+  })   
 }
 
 let list1 = document.getElementById('fav-market');
@@ -293,24 +290,23 @@ function hideList() {
   }
 }
 
+    //CALL TO BACKEND 
 function getFavorites() {
   return axios
     .get('/profile/favorites')
     .then((resultFromDB) => {
       dbResults = resultFromDB.data.favorites;
-
     })
 }
 
-
-  function clearMarkers() {
-    firstMarkers.forEach((marker) => {
-      marker.setMap(null);
-    });
-  }
+function clearMarkers() {
+  firstMarkers.forEach((marker) => {
+    marker.setMap(null);
+  });
+}
   
 
-  // CURRENT LOCATION
+// CURRENT LOCATION
     function getCurrentLocation() {
       navigator.geolocation.getCurrentPosition((position) => {
         const pos = {
@@ -318,7 +314,7 @@ function getFavorites() {
           lng: position.coords.longitude
         }
         map.setCenter(pos);
-        map.setZoom(17);
+        map.setZoom(15);
         clearMarkers();
         searchPlaces();
         function searchPlaces() {
@@ -349,7 +345,8 @@ function getFavorites() {
         }
       })
     }
-    //let userSearch = ;
+
+  //let userSearch = ;
     function searchLocation() {
       clearDivs();
       clearMarkers();
