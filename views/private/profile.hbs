@@ -141,7 +141,11 @@
               <div class="market-address">Address: ${address}</div>
               <div class="market-rating">Rating: ${rating}/5</div>
               
-              <form action='/favorites/create' method='POST'>
+              
+              </div>
+              
+          </div>
+          <form action='/favorites/create' method='POST'>
                 <input type='hidden' name='name' value='${name}' >
                 <input type='hidden' name='address' value='${address}' >
                 <input type='hidden' name='place_id' value='${place_id}' >
@@ -150,8 +154,6 @@
                 <input type='hidden' name='lng' value='${lng}' >
                 <button type='submit' class="submit btn-fav" >Add to Favorites</button>
               </form>
-              </div>
-          </div>
           <hr>
           </div>
           `
@@ -159,13 +161,21 @@
   }
 
   let resultRefresh = '';
-  function listAllNewLocation(name, address, place_id, rating, lat, lng) {
+  function listAllNewLocation(name, address, place_id, rating, lat, lng, image) {
           resultRefresh+= `
+          <div class="each">
           <div class="market-info" id="market-info">
+              <span class="market-image"><img src="${image}" /></span>
+              <div class="market-des">
               <div class="market-name">Market Name: ${name}</div>
               <div class="market-address">Address: ${address}</div>
               <div class="market-rating">Rating: ${rating}/5</div>
-              <form action='/favorites/create' method='POST'>
+              
+              
+              </div>
+              
+          </div>
+          <form action='/favorites/create' method='POST'>
                 <input type='hidden' name='name' value='${name}' >
                 <input type='hidden' name='address' value='${address}' >
                 <input type='hidden' name='place_id' value='${place_id}' >
@@ -174,7 +184,7 @@
                 <input type='hidden' name='lng' value='${lng}' >
                 <button type='submit' class="submit btn-fav" >Add to Favorites</button>
               </form>
-              <hr>
+          <hr>
           </div>
           `
     document.getElementById('list-markets').innerHTML = resultRefresh;
@@ -256,14 +266,19 @@ function listAllFavorites() {
         favorite.lng);
     }
      
-      myFavorites += `<div>
-                <h3>${favorite.name}</h3>
-                <h4>${favorite.address}</h4>
+      myFavorites += `
+                <div class="each">
+                <div class="align-favs">
+                <div class="market-name">Market Name: ${favorite.name}</div>
+                <div class="market-address">Address: ${favorite.address}</div>
                 <!-- we can only have post requests on forms -->
                 <form action="/profile/${favorite._id}/delete" method="POST">
-                  <button type="submit">Delete</button>
+                  <button class="submit btn-fav" type="submit">Remove Favorite</button>
                 </form>
-              </div>`
+              </div>
+              <hr>
+              </div>
+              `
           
     })
 
@@ -318,13 +333,16 @@ function getFavorites() {
                 
                 let data = results;
                 let name = results[i].name;
+                let image = (results[i].photos !== undefined) ?
+                        (results[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})) :
+                        '/images/losticon.png';
                 let address = results[i].formatted_address;
                 let place_id = results[i].place_id;
                 let rating = results[i].rating;
                 let lat = results[i].geometry.location.lat();
                 let lng = results[i].geometry.location.lng();
                 setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
-                listAllNewLocation(name, address, place_id, rating, lat, lng);
+                listAllNewLocation(name, address, place_id, rating, lat, lng, image);
               }
             }
           })
@@ -356,13 +374,16 @@ function getFavorites() {
           for (let i = 0; i < results.length; i++) {
             let data = results;
             let name = results[i].name;
+            let image = (results[i].photos !== undefined) ?
+                        (results[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})) :
+                        '/images/losticon.png';
             let address = results[i].formatted_address;
             let place_id = results[i].place_id;
             let rating = results[i].rating;
            let lat = results[i].geometry.location.lat();
            let lng = results[i].geometry.location.lng();
             setMarker({ lat, lng }, name, address, place_id, rating, lat, lng);
-            listAllNewLocation(name, address, place_id, rating, lat, lng);
+            listAllNewLocation(name, address, place_id, rating, lat, lng, image);
           }
         }
       });
